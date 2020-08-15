@@ -1,0 +1,38 @@
+.costPerDay {
+  box-shadow: 2px 4px rgba(100, 100, 100, 0.2);
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 20px 0px;
+}
+
+.costPerDay .date {
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.date h1 {
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.date .infor {
+  flex-grow: 2;
+  margin-left: 10px;
+}
+
+.date .infor h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.date .infor p {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #888888;
+}
+
+.costPerDay .sumAmount {
+  font-weight: 500;
+}

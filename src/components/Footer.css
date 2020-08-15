@@ -1,0 +1,40 @@
+.footer {
+  display: flex;
+  border-top: 2px solid #eeeeee;
+  background-color: #ffffff;
+  justify-content: space-around;
+  position: sticky;
+  bottom: 0px;
+  width: 100%;
+}
+
+.footer .footerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+  color: #666666;
+  text-decoration: none;
+}
+
+.footer .footerItem.active {
+  color: #0077b6;
+}
+
+.footer .footerItem .icon {
+  font-size: 36px;
+  margin: 10px 0px;
+}
+
+.footer .addTransaction {
+  position: relative;
+  align-self: flex-end;
+}
+
+.footer .addTransaction .icon {
+  color: #0077b6;
+  font-size: 80px;
+  position: absolute;
+  bottom: 100%;
+}

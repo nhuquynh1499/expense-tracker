@@ -1,0 +1,38 @@
+.expenseItem {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+.expenseItem .iconCategory {
+  width: 50px;
+}
+
+.expenseItem .infor {
+  flex-grow: 2;
+  margin-left: 20px;
+}
+
+.expenseItem .infor .category {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.expenseItem .infor .notes {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #888888;
+}
+
+.expenseItem .amountMoney {
+  align-self: flex-start;
+  font-weight: 500;
+}
+
+.expenseItem .amountMoney.outflow {
+  color: red;
+}
+
+.expenseItem .amountMoney.inflow {
+  color: #0077b6;
+}
