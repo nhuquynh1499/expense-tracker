@@ -1,0 +1,19 @@
+.report {
+  background-color: #ffffff;
+}
+
+.report .sum {
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.report .sum h2 {
+  font-weight: 400;
+}
+
+.report .sum h1 {
+  font-size: 40px;
+  margin-top: 10px;
+  color: red;
+  font-weight: 500;
+}

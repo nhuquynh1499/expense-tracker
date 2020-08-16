@@ -1,0 +1,10 @@
+.planning {
+  display: flex;
+  flex-direction: column;
+}
+
+.planning .MuiTabs-flexContainer{
+  width: 100vw !important;
+  display: flex;
+  justify-content: space-around;
+}

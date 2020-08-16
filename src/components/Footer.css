@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   margin-bottom: 5px;
   color: #666666;
@@ -23,18 +24,11 @@
 }
 
 .footer .footerItem .icon {
-  font-size: 36px;
-  margin: 10px 0px;
-}
+  font-size: 30px;
 
-.footer .addTransaction {
-  position: relative;
-  align-self: flex-end;
 }
 
 .footer .addTransaction .icon {
   color: #0077b6;
-  font-size: 80px;
-  position: absolute;
-  bottom: 100%;
+  font-size: 70px;
 }

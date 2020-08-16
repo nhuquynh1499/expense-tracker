@@ -1,0 +1,24 @@
+.reportItem {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+
+}
+
+.reportItem .iconCategory {
+  width: 50px;
+}
+
+.reportItem .category {
+  flex-grow: 2;
+  margin-left: 20px;
+}
+
+.reportItem h3 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.reportItem .amount {
+  color: red;
+}

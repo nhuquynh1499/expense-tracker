@@ -5,31 +5,30 @@ import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import PieChartIcon from "@material-ui/icons/PieChart";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import PersonIcon from '@material-ui/icons/Person';
 
 function Footer() {
   return (
     <div className="footer">
       <Link to="/transaction" className="footerItem active">
         <AccountBalanceWalletIcon className="icon" />
-        <p>Transactions</p>
+        <p>Giao diện</p>
       </Link>
-      <div className="footerItem">
+      <Link to="/report" className="footerItem">
         <PieChartIcon className="icon" />
-        <p>Report</p>
-      </div>
+        <p>Báo cáo</p>
+      </Link>
       <div className="footerItem addTransaction">
         <AddCircleIcon className="icon"/>
-        <p>Add Transaction</p>
       </div>
-      <div className="footerItem">
+      <Link  to="/planning" className="footerItem">
         <ImportContactsIcon className="icon" />
-        <p>Planning</p>
-      </div>
-      <div className="footerItem">
-        <MoreVertIcon className="icon" />
-        <p>More</p>
-      </div>
+        <p>Kế hoạch</p>
+      </Link>
+      <Link to="/user"className="footerItem">
+        <PersonIcon className="icon" />
+        <p>Tài khoản</p>
+      </Link>
     </div>
   );
 }
