@@ -35,14 +35,12 @@
   height: 200px;
   background: linear-gradient(rgba(0,0,0,0.6), rgba(0, 0, 0, 0.6)), url('https://www.passionforsavings.com/content/uploads/2019/12/expense-tracker-printable.jpg');
   background-size: cover;
-  color: #fff;
-  font-size: 22px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 28px;
   position: relative;
   font-family: 'Open Sans Condensed', sans-serif;
-}
-
-.user .quotes span {
   letter-spacing: 5px;
+  font-weight: 700;
 }
 
 .user .quotes p {

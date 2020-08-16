@@ -1,17 +1,29 @@
-import React from 'react';
-import './ExpenseItem.css';
+import React from "react";
+import { GroupContext } from "../contexts/Group";
+import "./ExpenseItem.css";
 
-function ExpenseItem() {
+function ExpenseItem({ groupId, amount, note }) {
   return (
-    <div className="expenseItem">
-      <img className="iconCategory" src="https://freeiconshop.com/wp-content/uploads/edd/eat-flat-1.png" alt="icon" />
-      <div className="infor">
-        <h3 className="category">Ăn uống</h3>
-        <p className="notes">Tau ăn trưa đấy</p>
-      </div>
-      <h2 className="amountMoney outflow">{Number(50000).toLocaleString()}</h2>
-    </div>
-  )
+    <GroupContext.Consumer>
+      {({ groups }) => {
+        const group = groups.find((item) => {
+          return item._id === groupId;
+        });
+        return group && (
+          <div className="expenseItem">
+            <img className="iconCategory" src={group.icon} alt="icon" />
+            <div className="infor">
+              <h3 className="category">{group.name}</h3>
+              <p className="notes">{note}</p>
+            </div>
+            <h2 className="amountMoney outflow">
+              {Number(amount).toLocaleString()}
+            </h2>
+          </div>
+        );
+      }}
+    </GroupContext.Consumer>
+  );
 }
 
 export default ExpenseItem;

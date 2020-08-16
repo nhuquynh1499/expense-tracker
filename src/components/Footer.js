@@ -12,7 +12,7 @@ function Footer() {
     <div className="footer">
       <Link to="/transaction" className="footerItem active">
         <AccountBalanceWalletIcon className="icon" />
-        <p>Giao diện</p>
+        <p>Giao dịch</p>
       </Link>
       <Link to="/report" className="footerItem">
         <PieChartIcon className="icon" />

@@ -1,0 +1,33 @@
+import React, { Component } from "react";
+import axios from "axios";
+
+export const TransactionContext = React.createContext();
+export class TransactionProvider extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      transactions: [],
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8080/api/transaction")
+      .then((res) => {
+        const transactions = res.data;
+        this.setState({ transactions });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  render() {
+    return (
+      <TransactionContext.Provider
+        value={{ transactions: this.state.transactions }}
+      >
+        {this.props.children}
+      </TransactionContext.Provider>
+    );
+  }
+}

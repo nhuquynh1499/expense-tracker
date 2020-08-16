@@ -18,11 +18,8 @@ function User() {
       </div>
       <div className="quotes">
         <p>
-        If you don't know <br/>
-        how to care for <br/>
-        <span> money, </span> <br />
-        what makes you think money will care <br />
-        <span> about you?</span>
+        Save money and <br/> 
+        money will save you 
         </p>
       </div>
       <div className="userItem">

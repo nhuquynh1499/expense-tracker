@@ -1,15 +1,30 @@
-import React from 'react';
-import CostPerDay from '../components/CostPerDay';
-import './Transaction.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import CostPerDay from "../components/CostPerDay";
+import "./Transaction.css";
 
 function Transaction() {
+  const [times, setTimes] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/time")
+      .then((res) => {
+        const times = res.data;
+        setTimes(times);
+      })
+      .catch((err) => console.log(err));
+  },[]);
+
   return (
     <div className="transaction">
-      <CostPerDay />
-      <CostPerDay />
-
+      {
+        times.map((time, index) => {
+          return <CostPerDay key={index} time={time} />
+        })
+      }
     </div>
-  )
+  );
 }
 
-export default Transaction
+export default Transaction;
