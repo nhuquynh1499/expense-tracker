@@ -1,0 +1,20 @@
+.GroupItem {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.GroupItem:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.GroupItem img{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.GroupItem p {
+  font-size: 16px;
+}
