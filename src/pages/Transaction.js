@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { TransactionContext } from "../contexts/Transaction";
 import CostPerDay from "../components/CostPerDay";
 import "./Transaction.css";
 
 function Transaction() {
-  const [times, setTimes] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/time")
-      .then((res) => {
-        const times = res.data;
-        setTimes(times);
-      })
-      .catch((err) => console.log(err));
-  },[]);
-
   return (
     <div className="transaction">
-      {
-        times.map((time, index) => {
-          return <CostPerDay key={index} time={time} />
-        })
-      }
+      <TransactionContext.Consumer>
+        {({ transactions }) => {
+          const arrayAllDate = transactions.reduce((arrayDate, transaction) => {
+            if (arrayDate.indexOf(transaction.time))
+              arrayDate.push(transaction.time);
+            return arrayDate;
+          }, []);
+          arrayAllDate.sort((a ,b) => a - b);
+          return (
+            arrayAllDate &&
+            arrayAllDate.map((date, index) => <CostPerDay date={date} key={index}/>)
+          );
+        }}
+      </TransactionContext.Consumer>
     </div>
   );
 }

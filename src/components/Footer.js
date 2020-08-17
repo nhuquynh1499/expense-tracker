@@ -18,9 +18,9 @@ function Footer() {
         <PieChartIcon className="icon" />
         <p>Báo cáo</p>
       </Link>
-      <div className="footerItem addTransaction">
+      <Link to="/add-transaction"className="footerItem addTransaction" >
         <AddCircleIcon className="icon"/>
-      </div>
+      </Link>
       <Link  to="/planning" className="footerItem">
         <ImportContactsIcon className="icon" />
         <p>Kế hoạch</p>

@@ -9,17 +9,19 @@ function ExpenseItem({ groupId, amount, note }) {
         const group = groups.find((item) => {
           return item._id === groupId;
         });
-        return group && (
-          <div className="expenseItem">
-            <img className="iconCategory" src={group.icon} alt="icon" />
-            <div className="infor">
-              <h3 className="category">{group.name}</h3>
-              <p className="notes">{note}</p>
+        return (
+          group && (
+            <div className="expenseItem">
+              <img className="iconCategory" src={group.icon} alt="icon" />
+              <div className="infor">
+                <h3 className="category">{group.name}</h3>
+                <p className="notes">{note}</p>
+              </div>
+              <h2 className="amountMoney outflow">
+                {Number(amount).toLocaleString()}
+              </h2>
             </div>
-            <h2 className="amountMoney outflow">
-              {Number(amount).toLocaleString()}
-            </h2>
-          </div>
+          )
         );
       }}
     </GroupContext.Consumer>

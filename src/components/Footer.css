@@ -4,8 +4,8 @@
   background-color: #ffffff;
   justify-content: space-around;
   position: sticky;
-  bottom: 0px;
   width: 100%;
+  bottom: 0;
 }
 
 .footer .footerItem {

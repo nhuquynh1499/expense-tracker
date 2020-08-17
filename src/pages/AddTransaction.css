@@ -1,0 +1,109 @@
+.addTransaction h1 {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  font-size: 24px;
+}
+
+.addTransaction .container {
+  background-color: #ffffff;
+  margin: 20px 0px;
+}
+
+.addTransaction .container .item {
+  display: flex;
+  align-items: center;
+}
+
+.container .item input {
+  border: none;
+  font-size: 18px;
+  width: 100%;
+}
+
+.container .item input:focus {
+  outline: none
+}
+
+.container .item .icon {
+  width: 40px;
+  height: 40px;
+  margin: 0px 30px;
+  color: #666666;
+  display: grid;
+  place-items: center;
+}
+
+.container .item .icon .imgIcon {
+  height: 24px;
+  width: 24px;
+}
+
+.container .item .vnd {
+  border: 1px solid #dddddd;
+  background-color: #eeeeee6e;
+  border-radius: 3px;
+  min-width: 40px;
+}
+
+.container .group .icon {
+  background-color: #eeeeee;
+  border-radius: 50%;
+}
+
+.container .group .content span {
+  font-size: 18px;
+  flex-grow: 2;
+}
+
+.container .item .content {
+  flex-grow: 2;
+  border-bottom: 1px solid #eeeeee;
+  padding: 20px 20px 20px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.container .item:last-child .content {
+  border-bottom: none;
+}
+
+.container .item .amount {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container .item .amount p {
+  margin-bottom: 3px;
+}
+
+.container .item .amount input {
+  font-size: 36px;
+}
+
+.action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.action button {
+  border: none;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0px;
+  font-size: 16px;
+  cursor: pointer; 
+  font-weight: 600;
+}
+
+.action button:focus {
+  outline: none;
+}
+
+.action button:last-child {
+  border-left: 1px solid #0077b6;
+  color: #0077b6;
+}
+
+

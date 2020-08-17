@@ -1,10 +1,26 @@
-import React from "react";
-import { TransactionContext } from "../contexts/Transaction";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ExpenseItem from "./ExpenseItem";
 
 import "./CostPerDay.css";
 
-function CostPerDay({ time }) {
+function CostPerDay({ date }) {
+  const [transactions, setTransactions] = useState([]);
+  const day = new Date(date).getDate();
+  const month = new Date(date).getMonth() + 1;
+  const year = new Date(date).getFullYear();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(
+        `http://localhost:8080/api/transaction?d=${day}&m=${month}&y=${year}`
+      );
+      const transactions = res.data;
+      setTransactions(transactions);
+    };
+    fetchData();
+  }, [day, month, year]);
+
   const daysOfWeek = [
     "Sunday",
     "Monday",
@@ -14,40 +30,29 @@ function CostPerDay({ time }) {
     "Friday",
     "Saturday",
   ];
+
   return (
     <div className="costPerDay">
       <div className="date">
-        <h1>{new Date(time.date).getDate()}</h1>
+        <h1>{day}</h1>
         <div className="infor">
-          <h3>{daysOfWeek[new Date(time.date).getDay()]}</h3>
+          <h3>{daysOfWeek[new Date(date).getDay()]}</h3>
           <p>
-            tháng {new Date(time.date).getMonth()}{" "}
-            {new Date(time.date).getFullYear()}
+            tháng {month} {year}
           </p>
         </div>
-        <h2 className="sumAmount">{Number(time.sumAmount).toLocaleString()}</h2>
+        <h2 className="sumAmount">{Number(6000000).toLocaleString()}</h2>
       </div>
       <div className="content">
-        {time?.listTransaction?.map((item) => {
-          return (
-            <TransactionContext.Consumer>
-              {({ transactions }) => {
-                const transaction = transactions.find((transaction) => {
-                  return transaction._id === item;
-                });
-                return (
-                  transaction && (
-                    <ExpenseItem
-                      groupId={transaction.groupId}
-                      amount={transaction.amount}
-                      note={transaction.note}
-                    />
-                  )
-                );
-              }}
-            </TransactionContext.Consumer>
-          );
-        })}
+        {transactions.length > 0 &&
+          transactions.map((transaction, index) => (
+            <ExpenseItem
+              groupId={transaction.groupId}
+              amount={transaction.amount}
+              note={transaction.note}
+              key={index}
+            />
+          ))}
       </div>
     </div>
   );
