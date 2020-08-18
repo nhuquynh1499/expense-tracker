@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  background-color: #0077b6;
+  justify-content: center;
+}
+
+.header .item {
+  font-size: 36px;
+  color: #fff;
+  display: none;
+}
+
+.header .item.active {
+  display: block;
+}

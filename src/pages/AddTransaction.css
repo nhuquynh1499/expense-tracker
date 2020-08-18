@@ -40,7 +40,7 @@
 
 .container .item .vnd {
   border: 1px solid #dddddd;
-  background-color: #eeeeee6e;
+  background-color: #F5F5F8;
   border-radius: 3px;
   min-width: 40px;
 }
@@ -50,19 +50,20 @@
 }
 
 .container .group .icon {
-  background-color: #eeeeee;
+  background-color: #F5F5F8;
   border-radius: 50%;
   background-size: cover;
 }
 
-.container .group .content span {
+.container .group .content input {
   font-size: 18px;
   flex-grow: 2;
+  background-color: #fff;
 }
 
 .container .item .content {
   flex-grow: 2;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #F5F5F8;
   padding: 20px 20px 20px 0px;
   display: flex;
   align-items: center;
@@ -108,7 +109,7 @@
 
 .action button:last-child {
   border-left: 1px solid #0077b6;
-  color: #0077b6;
+  color: #5A79FA;
 }
 
 .Modal {

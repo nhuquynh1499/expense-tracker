@@ -1,15 +1,14 @@
 .costPerDay {
-  box-shadow: 2px 4px rgba(100, 100, 100, 0.2);
   background-color: #ffffff;
-  border-radius: 5px;
-  margin: 20px 0px;
+  border-radius: 7px;
+  margin: 20px;
 }
 
 .costPerDay .date {
   display: flex;
   padding: 10px 20px;
   align-items: center;
-  border-bottom: 2px solid #eeeeee;
+  border-bottom: 2px solid #F5F5F8;
 }
 
 .date h1 {

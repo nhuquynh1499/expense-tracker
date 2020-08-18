@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import SubjectIcon from "@material-ui/icons/Subject";
 import EventIcon from "@material-ui/icons/Event";
@@ -8,9 +10,15 @@ import GroupItem from "../components/GroupItem";
 import "./AddTransaction.css";
 
 function AddTransaction() {
+  const history = useHistory();
   const [open, setOpen] = React.useState(false);
   const [type, setType] = React.useState(0);
-  const [amountValue, setAmountValue] = React.useState(0);
+  const [data, setData] = React.useState({
+    groupId: "",
+    amount: 0,
+    note: "",
+    time: getToday(),
+  });
   const nameGroup = useRef(null);
   const iconGroup = useRef(null);
 
@@ -23,13 +31,24 @@ function AddTransaction() {
   };
 
   const handleChange = (event) => {
-    setAmountValue(event.target.value);
-  }
-  console.log(amountValue);
+    const name = event.target.name;
+    const value = event.target.value;
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
 
-  function selectGroup(name, icon) {
-    nameGroup.current.innerHTML = name;
-    iconGroup.current.setAttribute('style', 'background-image: url('+ icon + ')');
+  function selectGroup(id, name, icon) {
+    nameGroup.current.value = name;
+    iconGroup.current.setAttribute(
+      "style",
+      "background-image: url(" + icon + ")"
+    );
+    setData({
+      ...data,
+      groupId: id
+    })
     setOpen(false);
   }
 
@@ -46,6 +65,11 @@ function AddTransaction() {
     );
   }
 
+  const handleSubmit = async () => {
+    await axios.post("http://localhost:8080/api/transaction", data);
+    history.push("/");
+  };
+
   return (
     <div className="addTransaction">
       <h1>Thêm Giao Dịch</h1>
@@ -54,13 +78,24 @@ function AddTransaction() {
           <div className="icon vnd">VND</div>
           <div className="content amount">
             <p>Số tiền</p>
-            <input type="text" defaultValue={0} value={Number(amountValue)} onChange={handleChange}/>
+            <input
+              name="amount"
+              type="text"
+              defaultValue={0}
+              value={Number(data.amount)}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className="item group" onClick={handleOpen}>
           <div ref={iconGroup} className="icon"></div>
           <div className="content">
-            <span ref={nameGroup}>Chọn nhóm</span>
+            <input
+              name="group"
+              ref={nameGroup}
+              placeholder="Chọn nhóm"
+              disabled
+            />
             <NavigateNextIcon className="moreIcon" />
           </div>
         </div>
@@ -92,7 +127,11 @@ function AddTransaction() {
                   return groups.map((group, index) => {
                     return (
                       group.type === type && (
-                        <GroupItem group={group} key={index} onClick={() => selectGroup(group.name, group.icon)}/>
+                        <GroupItem
+                          group={group}
+                          key={index}
+                          onClick={() => selectGroup(group._id, group.name, group.icon)}
+                        />
                       )
                     );
                   });
@@ -105,18 +144,31 @@ function AddTransaction() {
           <div className="icon">
             <SubjectIcon className="imgIcon" />
           </div>
-          <input type="text" placeholder="Ghi chú" className="content" />
+          <input
+            type="text"
+            name="note"
+            placeholder="Ghi chú"
+            className="content"
+            value={data.note}
+            onChange={handleChange}
+          />
         </div>
         <div className="item">
           <div className="icon">
             <EventIcon className="imgIcon" />
           </div>
-          <input className="content" type="date" defaultValue={getToday()} />
+          <input
+            name="time"
+            className="content"
+            type="date"
+            value={data.time}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className="container action">
         <button> Hủy </button>
-        <button> Lưu </button>
+        <button onClick={handleSubmit}> Lưu </button>
       </div>
     </div>
   );

@@ -30,7 +30,7 @@
 }
 
 .expenseItem .amountMoney.outflow {
-  color: red;
+  color: #E44B65;
 }
 
 .expenseItem .amountMoney.inflow {

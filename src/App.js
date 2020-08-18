@@ -1,5 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import { GroupProvider } from "./contexts/Group";
 import { TransactionProvider } from "./contexts/Transaction";
 import Transaction from "./pages/Transaction";
@@ -7,6 +11,7 @@ import AddTransaction from "./pages/AddTransaction";
 import Report from "./pages/Report";
 import Planning from "./pages/Planning";
 import User from "./pages/User";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import "./App.css";
@@ -17,6 +22,7 @@ function App() {
       <TransactionProvider>
         <Router>
           <div className="App">
+            <Header />
             <div className="main">
               <Switch>
                 <Route path="/transaction">

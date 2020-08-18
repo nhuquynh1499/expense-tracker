@@ -31,6 +31,14 @@ function CostPerDay({ date }) {
     "Saturday",
   ];
 
+  const sumAmount = () => {
+    return transactions.length > 0
+      ? transactions.reduce((sum, item) => {
+          return sum + item.amount;
+        }, 0)
+      : 0;
+  };
+
   return (
     <div className="costPerDay">
       <div className="date">
@@ -41,7 +49,7 @@ function CostPerDay({ date }) {
             tháng {month} {year}
           </p>
         </div>
-        <h2 className="sumAmount">{Number(6000000).toLocaleString()}</h2>
+        <h2 className="sumAmount">{Number(sumAmount()).toLocaleString()}</h2>
       </div>
       <div className="content">
         {transactions.length > 0 &&

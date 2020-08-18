@@ -10,7 +10,6 @@ import "./User.css";
 function User() {
   return (
     <div className="user">
-      <h1 className="title">Tài khoản</h1>
       <img className="avatar" src={userIcon} alt="avatar" />
       <div className="infor">
         <h3 className="name">Như Quỳnh</h3>

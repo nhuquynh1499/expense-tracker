@@ -4,11 +4,13 @@
 
 .report .sum {
   text-align: center;
-  padding: 20px 0px;
 }
 
 .report .sum h2 {
   font-weight: 400;
+  background-color: #0077b6;
+  padding: 20px 0px;
+  color: #ffffff;
 }
 
 .report .sum h1 {

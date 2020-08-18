@@ -9,7 +9,6 @@ function Report() {
   return (
     <div className="report">
       <div className="sum">
-        <h2>Expense</h2>
         <h1>{Number(50000).toLocaleString()}</h1>
       </div>
       <Doughnut
