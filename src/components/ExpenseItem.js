@@ -17,7 +17,7 @@ function ExpenseItem({ groupId, amount, note }) {
                 <h3 className="category">{group.name}</h3>
                 <p className="notes">{note}</p>
               </div>
-              <h2 className="amountMoney outflow">
+              <h2 className={group.addSum ? "amountMoney inflow" : "amountMoney outflow"}>
                 {Number(amount).toLocaleString()}
               </h2>
             </div>

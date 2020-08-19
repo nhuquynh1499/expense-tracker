@@ -1,10 +1,91 @@
 .planning {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.planning .MuiTabs-flexContainer{
+.addPlanningIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #666666;
+  text-decoration: none;
+  position: absolute;
+  top: -40px;
+  right: 20px;
+  z-index: 3;
+}
+
+.addPlanningIcon:hover .wrapped {
+  padding: 5px;
+}
+
+.addPlanningIcon .wrapped {
+  background-color: #0077b6;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  margin-top: 10px;
+  border: 7px solid #f5f5f8;
+  box-sizing: content-box;
+  transition: padding 0.5s;
+}
+
+.addPlanningIcon .wrapped .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.typePlan {
+  /* margin-top: -40px; */
+  margin-left: 20px;
+  margin-right: 20px;
+  position: absolute;
+  /* top: -50%; */
+  transform: translateY(-50%);
+  /* margin-top: -55px; */
+  display: flex;
+  /* justify-content: center; */
+  z-index: 2;
+  /* box-shadow: 0px 5px 5px #dddddd; */
+  border-radius: 50vh;
+  /* background-color: #ffffff; */
+}
+
+.typePlan button {
+  background-color: #0077b6;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  padding: 20px;
+  font-weight: 600;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.typePlan button:focus {
+  outline: none;
+}
+
+.typePlan button.active {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: 600;
+}
+
+.mainPlan {
+  background-color: #fff;
+  margin-top: 27px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.planning .MuiTabs-flexContainer {
   width: 100vw !important;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }

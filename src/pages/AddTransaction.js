@@ -39,16 +39,19 @@ function AddTransaction() {
     });
   };
 
-  function selectGroup(id, name, icon) {
+  function selectGroup(id, name, icon, addSum) {
     nameGroup.current.value = name;
     iconGroup.current.setAttribute(
       "style",
       "background-image: url(" + icon + ")"
     );
+    const amount = addSum ? Math.abs(data.amount) : -1 * Math.abs(data.amount);
     setData({
       ...data,
-      groupId: id
-    })
+      amount: amount,
+      groupId: id,
+    });
+
     setOpen(false);
   }
 
@@ -72,7 +75,6 @@ function AddTransaction() {
 
   return (
     <div className="addTransaction">
-      <h1>Thêm Giao Dịch</h1>
       <div className="container">
         <div className="item">
           <div className="icon vnd">VND</div>
@@ -82,7 +84,7 @@ function AddTransaction() {
               name="amount"
               type="text"
               defaultValue={0}
-              value={Number(data.amount)}
+              value={Math.abs(data.amount)}
               onChange={handleChange}
             />
           </div>
@@ -102,24 +104,26 @@ function AddTransaction() {
         <Modal open={open} onClose={handleClose}>
           <div className="Modal">
             <div className="headerModal">
-              <button
-                className={type === 2 ? "active" : null}
-                onClick={() => setType(2)}
-              >
-                Đi vay/Cho vay
-              </button>
-              <button
-                className={type === 0 ? "active" : null}
-                onClick={() => setType(0)}
-              >
-                Khoản chi
-              </button>
-              <button
-                className={type === 1 ? "active" : null}
-                onClick={() => setType(1)}
-              >
-                Khoản thu
-              </button>
+              <div className="wrappedButton">
+                <button
+                  className={type === 2 ? "active" : null}
+                  onClick={() => setType(2)}
+                >
+                  Đi vay/Cho vay
+                </button>
+                <button
+                  className={type === 0 ? "active" : null}
+                  onClick={() => setType(0)}
+                >
+                  Khoản chi
+                </button>
+                <button
+                  className={type === 1 ? "active" : null}
+                  onClick={() => setType(1)}
+                >
+                  Khoản thu
+                </button>
+              </div>
             </div>
             <div className="mainModal">
               <GroupContext.Consumer>
@@ -130,7 +134,14 @@ function AddTransaction() {
                         <GroupItem
                           group={group}
                           key={index}
-                          onClick={() => selectGroup(group._id, group.name, group.icon)}
+                          onClick={() =>
+                            selectGroup(
+                              group._id,
+                              group.name,
+                              group.icon,
+                              group.addSum
+                            )
+                          }
                         />
                       )
                     );
@@ -168,7 +179,7 @@ function AddTransaction() {
       </div>
       <div className="container action">
         <button> Hủy </button>
-        <button onClick={handleSubmit}> Lưu </button>
+        <button className="save" onClick={handleSubmit}> Lưu </button>
       </div>
     </div>
   );

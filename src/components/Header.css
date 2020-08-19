@@ -1,15 +1,61 @@
 .header {
-  display: flex;
-  background-color: #0077b6;
-  justify-content: center;
+  color: #fff;
+  z-index: 2;
 }
 
 .header .item {
-  font-size: 36px;
-  color: #fff;
   display: none;
+  background-color: #0077b6;
+  padding: 20px;
+  padding: 50px 40px;
+  background-image: linear-gradient(to right, #3578aa, #a4c7e0);
+}
+
+.header .item .title {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+  
 }
 
 .header .item.active {
   display: block;
+}
+/* 
+.header .transaction {
+  padding: 50px 40px;
+  background-image: linear-gradient(to right, #3578aa, #a4c7e0);
+} */
+
+.header .transaction p {
+  font-size: 18px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* .header .planning {
+  padding: 50px 40px;
+  background-image: linear-gradient(to right, #3578aa, #a4c7e0);
+} */
+
+.header .user {
+  text-align: center;
+}
+
+.header .addTransaction {
+  display: flex !important;
+  flex-direction: row;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header .addTransaction .name {
+  flex-grow: 2;
+  text-align: center;
+}
+
+.header .addTransaction .backIcon {
+  color: #fff;
 }

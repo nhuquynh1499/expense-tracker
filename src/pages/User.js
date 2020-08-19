@@ -3,7 +3,6 @@ import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import BuildIcon from "@material-ui/icons/Build";
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import userIcon from "../images/user.svg";
 import "./User.css";
 
@@ -15,31 +14,39 @@ function User() {
         <h3 className="name">Như Quỳnh</h3>
         <p className="mail">ngngocnhuquynh0104@gmail.com</p>
       </div>
-      <div className="quotes">
+      {/* <div className="quotes">
         <p>
         Save money and <br/> 
         money will save you 
         </p>
-      </div>
-      <div className="userItem">
-        <AccountBalanceWalletIcon className="iconItem" />
-        <span>Ví của tôi</span>
-        <NavigateNextIcon className="iconItem"/>
-      </div>
-      <div className="userItem">
-        <WidgetsIcon className="iconItem" />
-        <span>Nhóm</span>
-        <NavigateNextIcon className="iconItem"/>
-      </div>
-      <div className="userItem">
-        <MonetizationOnIcon className="iconItem" />
-        <span>Sổ nợ</span>
-        <NavigateNextIcon className="iconItem"/>
-      </div>
-      <div className="userItem">
-        <BuildIcon className="iconItem" />
-        <span>Công cụ</span>
-        <NavigateNextIcon className="iconItem"/>
+      </div> */}
+      <button className="settingUser">Thiết lập tài khoản</button>
+      <h1 className='title'>Mở rộng</h1>
+      <div className="main">
+        <div className="userItem">
+          <div className="bgIcon wallet">
+            <AccountBalanceWalletIcon className="iconItem" />
+          </div>
+          <span>Ví của tôi</span>
+        </div>
+        <div className="userItem">
+          <div className="bgIcon group">
+            <WidgetsIcon className="iconItem" />
+          </div>
+          <span>Nhóm</span>
+        </div>
+        <div className="userItem">
+          <div className="bgIcon brown">
+            <MonetizationOnIcon className="iconItem" />
+          </div>
+          <span>Sổ nợ</span>
+        </div>
+        <div className="userItem">
+          <div className="bgIcon setting">
+            <BuildIcon className="iconItem" />
+          </div>
+          <span>Công cụ</span>
+        </div>
       </div>
     </div>
   );

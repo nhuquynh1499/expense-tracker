@@ -1,20 +1,54 @@
 import React from "react";
+import { GroupContext } from "../contexts/Group";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import FoodIcon from "../images/food.svg";
 import "./PlanItem.css";
 
-function PlanItem() {
+function PlanItem(props) {
+  console.log(props.planning);
+  const { groupId, goal, amount, dateStart, dateEnd } = props.planning;
+
+  function formatDay(date) {
+    const monthOfYear = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    const d = new Date(date);
+    return d.getDate() + " " + monthOfYear[d.getMonth()] + " " + d.getFullYear();
+  }
+
+  function sumDay() {
+    const dStart = new Date(dateStart);
+    const dEnd = new Date(dateEnd);
+    return Math.ceil((dEnd - dStart + 1) / (3600000*24));
+  }
+
+  function dayFromNow() {
+    const dStart = new Date(dateStart);
+    return (Date.now() - dStart) > 0 ? Math.ceil((Date.now() - dStart) / (3600000 * 24)) : 0
+  }
+
   return (
     <div className="planItem">
       <div className="headerPlan">
-        <img className="iconCategory" src={FoodIcon} alt="icon" />
-        <p>Ăn uống</p>
-        <h1>{Number(150000).toLocaleString()}</h1>
+        <GroupContext.Consumer>
+          {({ groups }) => {
+            const group = groups.find((item) => item._id === groupId);
+            return (
+              group && (
+                <div className="group">
+                  <img className="iconCategory" src={group.icon} alt="icon" />
+                  <p>{group.name}</p>
+                </div>
+              )
+            );
+          }}
+        </GroupContext.Consumer>
+        <div className="number">
+          <span className="goal">{Number(goal).toLocaleString()}</span>
+          <span className="amount">Còn lại {Number(goal - amount).toLocaleString()}</span>
+        </div>
       </div>
-      <LinearProgress className="process" variant="determinate" value={50} />
+      <LinearProgress className="process" variant="determinate" value={amount / goal * 100} />
       <div className="time">
-        <p>10 Jun 2020 - 10 Jul 2020</p>
-        <p>3 / 26</p>
+        <p>{formatDay(dateStart)} - {formatDay(dateEnd)}</p>
+        <p>{dayFromNow()} / {sumDay()}</p>
       </div>
     </div>
   );

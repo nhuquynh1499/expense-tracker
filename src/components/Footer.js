@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Footer.css";
 import { Link, useLocation } from "react-router-dom";
-import AddIcon from "../images/add.svg";
-import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
-import PieChartIcon from "@material-ui/icons/PieChart";
-import ImportContactsIcon from "@material-ui/icons/ImportContacts";
-import PersonIcon from "@material-ui/icons/Person";
+import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
+import DonutSmallOutlinedIcon from "@material-ui/icons/DonutSmallOutlined";
+import TurnedInNotOutlinedIcon from "@material-ui/icons/TurnedInNotOutlined";
+import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 
 function Footer(props) {
   let { pathname } = useLocation();
@@ -19,53 +18,44 @@ function Footer(props) {
 
   return (
     <div className="footer">
-      <div className="footerPage left">
-        <Link
-          className={
-            isActive === "/transaction" || isActive === "/" ? "footerItem active" : "footerItem"
-          }
-          onClick={toggle}
-          to="/transaction"
-        >
-          <AccountBalanceWalletIcon className="icon" />
-          <p>Giao dịch</p>
-        </Link>
-        <Link
-          to="/report"
-          className={
-            isActive === "/report" ? "footerItem active" : "footerItem"
-          }
-          onClick={toggle}
-        >
-          <PieChartIcon className="icon" />
-          <p>Báo cáo</p>
-        </Link>
-      </div>
-      <Link to="/add-transaction" className="footerItem addTransaction">
-        <div className="wrapped">
-          <img src={AddIcon} alt="icon" className="icon" />
-        </div>
+      <Link
+        className={
+          isActive === "/transaction" || isActive === "/"
+            ? "footerItem active"
+            : "footerItem"
+        }
+        onClick={toggle}
+        to="/transaction"
+      >
+        <AccountBalanceWalletOutlinedIcon className="icon" />
+        <p>Giao dịch</p>
       </Link>
-      <div className="footerPage right">
-        <Link
-          to="/planning"
-          className={
-            isActive === "/planning" ? "footerItem active" : "footerItem"
-          }
-          onClick={toggle}
-        >
-          <ImportContactsIcon className="icon" />
-          <p>Kế hoạch</p>
-        </Link>
-        <Link
-          to="/user"
-          className={isActive === "/user" ? "footerItem active" : "footerItem"}
-          onClick={toggle}
-        >
-          <PersonIcon className="icon" />
-          <p>Tài khoản</p>
-        </Link>
-      </div>
+      <Link
+        to="/report"
+        className={isActive === "/report" ? "footerItem active" : "footerItem"}
+        onClick={toggle}
+      >
+        <DonutSmallOutlinedIcon className="icon" />
+        <p>Báo cáo</p>
+      </Link>
+      <Link
+        to="/planning"
+        className={
+          isActive === "/planning" ? "footerItem active" : "footerItem"
+        }
+        onClick={toggle}
+      >
+        <TurnedInNotOutlinedIcon className="icon" />
+        <p>Kế hoạch</p>
+      </Link>
+      <Link
+        to="/user"
+        className={isActive === "/user" ? "footerItem active" : "footerItem"}
+        onClick={toggle}
+      >
+        <PersonOutlineOutlinedIcon className="icon" />
+        <p>Tài khoản</p>
+      </Link>
     </div>
   );
 }

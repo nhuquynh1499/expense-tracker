@@ -6,6 +6,7 @@ import ReportItem from "../components/ReportItem";
 import "./Report.css";
 
 function Report() {
+
   return (
     <div className="report">
       <div className="sum">

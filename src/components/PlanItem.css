@@ -2,16 +2,15 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  background-color: #fff;
+  background-color: #f2faff;
   margin: 20px;
   border-radius: 10px;
-  line-height: 25px;
 }
 
 .planItem .headerPlan {
   display: flex;
+  height: 100%;
   justify-content: space-between;
-  align-items: center;
 }
 
 .planItem .headerPlan .iconCategory {
@@ -20,11 +19,28 @@
   margin-right: 20px;
 }
 
-.planItem .headerPlan p {
+.planItem .headerPlan .group {
+  display: flex;
+}
+
+.planItem .headerPlan .group p {
   font-size: 18px;
   flex-grow: 2;
   margin-bottom: 5px;
   font-weight: 500;
+}
+
+.headerPlan .number {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.headerPlan .number .goal {
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .process {

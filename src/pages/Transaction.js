@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import AddIcon from "../images/add.svg";
 import { TransactionContext } from "../contexts/Transaction";
 import CostPerDay from "../components/CostPerDay";
 import "./Transaction.css";
@@ -6,6 +8,12 @@ import "./Transaction.css";
 function Transaction() {
   return (
     <div className="transaction">
+      <Link to="/add-transaction" className="addTransactionIcon">
+        <div className="wrapped">
+          <img src={AddIcon} alt="icon" className="icon" />
+        </div>
+      </Link>
+      <div className="listTransaction">
       <TransactionContext.Consumer>
         {({ transactions }) => {
           const arrayAllDate = transactions.reduce((arrayDate, transaction) => {
@@ -22,10 +30,13 @@ function Transaction() {
           console.log(arrayAllDate);
           return (
             arrayAllDate &&
-            arrayAllDate.map((date, index) => <CostPerDay date={date} key={index}/>)
+            arrayAllDate.map((date, index) => (
+              <CostPerDay date={date} key={index} />
+            ))
           );
         }}
       </TransactionContext.Consumer>
+      </div>
     </div>
   );
 }

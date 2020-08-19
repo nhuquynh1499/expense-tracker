@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import './Header.css';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'; 
+import "./Header.css";
+import { useLocation } from "react-router-dom";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 function Header() {
   const { pathname } = useLocation();
@@ -8,18 +10,46 @@ function Header() {
 
   useEffect(() => {
     setIsActive(pathname);
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <div className="header">
-      <div className={ isActive === "/transaction" || isActive === "/" ? "transaction item active" : "transaction item" }>
-        <p>Transaction</p>
+      <div
+        className={
+          isActive === "/transaction" || isActive === "/"
+            ? "transaction item active"
+            : "item"
+        }
+      >
+        <h2 className="title">Transactions</h2>
       </div>
-      <div className={ isActive === "/report"? "item active" : "item" }>
-        <p>Report</p>
+      <div
+        className={
+          isActive === "/add-transaction" || isActive === "/"
+            ? "addTransaction item active"
+            : "item"
+        }
+      >
+        <Link to="/transaction">
+          <ArrowBackIosIcon className="backIcon" />
+        </Link>
+        <div className="name">
+          <span className="title">Thêm giao dịch</span>
+        </div>
+      </div>
+      <div className={isActive === "/report" ? "report item active" : "item"}>
+        <h2 className="title">Report</h2>
+      </div>
+      <div
+        className={isActive === "/planning" ? "planning item active" : "item"}
+      >
+        <h2 className="title">Planning</h2>
+      </div>
+      <div className={isActive === "/user" ? "user item active" : "item"}>
+        <h2 className="title">Profile</h2>
       </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

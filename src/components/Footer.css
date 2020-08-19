@@ -1,57 +1,48 @@
 .footer {
   display: flex;
   background-color: #ffffff;
-  justify-content: space-between;
+  justify-content: space-around;
   position: sticky;
   width: 100%;
   bottom: 0;
+  padding: 15px 0px;
+  box-shadow: 0px -5px 20px #bbbbbb;
 }
 
 .footer .footerItem {
+  cursor: pointer;
+  text-decoration: none;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  color: #666666;
-  text-decoration: none;
-}
-
-.footer .footerPage {
-  display: flex;
-  justify-content: space-around;
-  width: 45%;
-  padding: 15px 0px;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 50vh;
+  background-color: #ffffff;
 }
 
 .footer .footerItem.active {
-  color: #0077b6;
+  background-color: #0077b6;
+  border: #0077b6;
+}
+
+.footer .footerItem p {
+  display: none;
+}
+
+.footer .footerItem.active p {
+  /* color: #0077b6; */
+  color: #ffffff;
+  font-weight: 600;
+  display: inline;
 }
 
 .footer .footerItem .icon {
-  font-size: 30px;
-
+  font-size: 25px;
+  color: #222222;
+  margin-right: 5px;
 }
 
-.footer .addTransaction {
-  position: absolute;
-  bottom: 50%;
-  background-color: #f5f5f8;
-  height: 50%;
-  border-bottom-left-radius: 100vw;
-  border-bottom-right-radius: 100vw;
-  left: 50%;
-  transform: translate(-50%);
-}
-
-.footer .addTransaction .wrapped{
-  background-color: #0077b6;
-  padding: 20px;
-  border-radius: 50%;
-  margin: 0px 10px 40px 10px;
-}
-
-.footer .addTransaction .wrapped .icon {
-  width: 15px;
-  height: 15px;
+.footer .footerItem.active .icon {
+  color: #ffffff;
 }
