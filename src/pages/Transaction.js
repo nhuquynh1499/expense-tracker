@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AddIcon from "../images/add.svg";
 import { TransactionContext } from "../contexts/Transaction";
@@ -6,6 +6,7 @@ import CostPerDay from "../components/CostPerDay";
 import "./Transaction.css";
 
 function Transaction() {
+  const [value, setValue] = useState(0);
   return (
     <div className="transaction">
       <Link to="/add-transaction" className="addTransactionIcon">
@@ -13,6 +14,26 @@ function Transaction() {
           <img src={AddIcon} alt="icon" className="icon" />
         </div>
       </Link>
+      <div className="filterDate">
+        <button
+          className={value === 0 ? "active" : null}
+          onClick={() => setValue(0)}
+        >
+          Tháng trước
+        </button>
+        <button
+          className={value === 1 ? "active" : null}
+          onClick={() => setValue(1)}
+        >
+          Tháng này
+        </button>
+        <button
+          className={value === 2 ? "active" : null}
+          onClick={() => setValue(2)}
+        >
+          Tương lai
+        </button>
+      </div>
       <div className="listTransaction">
       <TransactionContext.Consumer>
         {({ transactions }) => {

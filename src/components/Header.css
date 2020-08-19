@@ -1,12 +1,10 @@
 .header {
   color: #fff;
-  z-index: 2;
 }
 
 .header .item {
   display: none;
   background-color: #0077b6;
-  padding: 20px;
   padding: 50px 40px;
   background-image: linear-gradient(to right, #3578aa, #a4c7e0);
 }
@@ -49,6 +47,7 @@
   text-align: center;
   justify-content: flex-start;
   align-items: center;
+  padding: 20px;
 }
 
 .header .addTransaction .name {
