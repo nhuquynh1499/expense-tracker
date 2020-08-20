@@ -1,58 +1,67 @@
-import React from "react";
-import { Doughnut } from "react-chartjs-2";
-import "chart.piecelabel.js";
-import "chartjs-plugin-datalabels";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ReportItem from "../components/ReportItem";
+import Chart from "../components/Chart";
+import { GroupContext } from "../contexts/Group";
 import "./Report.css";
 
 function Report() {
+  const [reports, setReports] = useState([]);
+  const backgroundColor = [
+    "#989BCF",
+    "#66C4BE",
+    "#E7716E",
+    "#F5C431",
+    "#62B58E",
+    "#BC95DF",
+  ];
+  let listGroup, listAmount;
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await axios.get(
+        "http://localhost:8080/api/report?m=8&y=2020"
+      );
+      setReports(res.data);
+    }
+    fetchData();
+  }, []);
+
+  if (reports[0]) {
+    listGroup = Object.keys(reports[0].listTransaction);
+    listAmount = Object.values(reports[0].listTransaction);
+  }
 
   return (
     <div className="report">
       <div className="sum">
-        <h1>{Number(50000).toLocaleString()}</h1>
+        <p>Khoản chi</p>
+        <p className="amount">{Number(50000).toLocaleString()}</p>
       </div>
-      <Doughnut
-        data={{
-          labels: [
-            "Africa",
-            "Asia",
-            "Europe",
-            "Latin America",
-            "North America",
-          ],
-          datasets: [
-            {
-              label: "Population (millions)",
-              backgroundColor: [
-                "#d62828",
-                "#00a896",
-                "#f77f00",
-                "#fcbf49",
-                "#05668d",
-              ],
-              data: [2478, 5267, 734, 784, 433],
-            },
-          ],
+      <GroupContext.Consumer>
+        {({ getInforGroup }) => {
+          let data;
+          if (listGroup && listAmount) {
+            data = listGroup.map((item, index) => {
+              return {
+                label: getInforGroup(item) ? getInforGroup(item).name : null,
+                value: listAmount[index],
+              };
+            });
+          }
+          return data && <Chart chartData={data} />;
         }}
-        option={{
-          pieceLabel: {
-            render: "value",
-          },
-
-          plugins: {
-            datalabels: {
-              display: true,
-							color: 'white'
-            },
-          },
-        }}
-      />
-      <ReportItem />
-      <ReportItem />
-      <ReportItem />
-      <ReportItem />
-      <ReportItem />
+      </GroupContext.Consumer>
+      {listGroup?.map((item, index) => {
+        return (
+          <ReportItem
+            key={index}
+            groupId={item}
+            amount={listAmount[index]}
+            bgColor={backgroundColor[index]}
+          />
+        );
+      })}
     </div>
   );
 }

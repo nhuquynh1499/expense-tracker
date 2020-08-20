@@ -4,18 +4,17 @@
 
 .report .sum {
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.report .sum h2 {
-  font-weight: 400;
-  background-color: #0077b6;
-  padding: 20px 0px;
-  color: #ffffff;
-}
-
-.report .sum h1 {
-  font-size: 40px;
-  margin-top: 10px;
-  color: red;
+.report .sum p {
+  font-size: 24px;
   font-weight: 500;
+}
+
+.report .sum .amount {
+  color: red;
+  font-weight: 600;
 }

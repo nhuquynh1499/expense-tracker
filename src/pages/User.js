@@ -14,12 +14,6 @@ function User() {
         <h3 className="name">Như Quỳnh</h3>
         <p className="mail">ngngocnhuquynh0104@gmail.com</p>
       </div>
-      {/* <div className="quotes">
-        <p>
-        Save money and <br/> 
-        money will save you 
-        </p>
-      </div> */}
       <button className="settingUser">Thiết lập tài khoản</button>
       <h1 className='title'>Mở rộng</h1>
       <div className="main">

@@ -5,10 +5,8 @@ import "./ExpenseItem.css";
 function ExpenseItem({ groupId, amount, note }) {
   return (
     <GroupContext.Consumer>
-      {({ groups }) => {
-        const group = groups.find((item) => {
-          return item._id === groupId;
-        });
+      {({ getInforGroup }) => {
+        const group = getInforGroup(groupId);
         return (
           group && (
             <div className="expenseItem">

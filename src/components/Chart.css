@@ -1,0 +1,6 @@
+.chart span {
+  background-color: #f5f5f8!important;
+  width: 100%!important;
+  display: grid!important;
+  place-items: center!important;
+}

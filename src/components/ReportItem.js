@@ -1,14 +1,26 @@
-import React from 'react';
-import './ReportItem.css';
+import React from "react";
+import { GroupContext } from "../contexts/Group";
+import "./ReportItem.css";
 
-function ReportItem() {
+function ReportItem(props) {
+  const { groupId, amount, bgColor } = props;
+
   return (
-    <div className="reportItem">
-      <img className="iconCategory" src="https://freeiconshop.com/wp-content/uploads/edd/eat-flat-1.png" alt="icon" />
-      <h3 className="category">Food & Beverage</h3>
-      <h3 className="amount">{Number(50000).toLocaleString()}</h3>
-    </div>
-  )
+    <GroupContext.Consumer>
+      {({ getInforGroup }) => {
+        const group = getInforGroup(groupId);
+        return (
+          group && (
+            <div className="reportItem" style={{ backgroundColor: bgColor }}>
+              <img className="iconCategory" src={group.icon} alt="icon" />
+              <h3 className="category">{group.name}</h3>
+              <h3 className="amount">{Number(amount).toLocaleString()}</h3>
+            </div>
+          )
+        );
+      }}
+    </GroupContext.Consumer>
+  );
 }
 
-export default ReportItem
+export default ReportItem;

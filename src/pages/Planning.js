@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AddIcon from "../images/add.svg";
-// import Tabs from "@material-ui/core/Tabs";
-// import Tab from "@material-ui/core/Tab";
 import PlanItem from "../components/PlanItem";
 import "./Planning.css";
 

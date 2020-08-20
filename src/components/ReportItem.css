@@ -3,7 +3,6 @@
   padding: 20px;
   align-items: center;
   margin: 20px;
-  background-color: #ffffff;
   border-radius: 7px;
 }
 
@@ -20,7 +19,6 @@
   font-weight: 400;
   font-size: 18px;
 }
-
+/* 
 .reportItem .amount {
-  color: red;
-}
+} */
