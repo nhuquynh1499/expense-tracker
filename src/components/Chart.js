@@ -11,20 +11,19 @@ export default function Chart(props) {
   const { chartData } = props;
   const chartConfigs = {
     type: "pie2d",
-    width: "550",
-    height: "350",
+    width: "100%",
     dataFormat: "json",
     dataSource: {
       chart: {
-        caption: "Split of revenue by product categories",
-        subCaption: "Last year",
-        numberPrefix: "$",
+        // caption: "Thống kê chi tiêu",
+        // subCaption: "Tháng này",
+        bgColor: "#f5f5f8",
+        numberSuffix: " VND",
         showPercentInTooltip: "0",
         decimals: "1",
-        useDataPlotColorForLabels: "1",
+        useDataPlotColorForLabels: "1",  
+        showLegend: "0",
         // paletteColors: color,
-
-        //Theme
         theme: "fusion",
       },
       data: chartData,
