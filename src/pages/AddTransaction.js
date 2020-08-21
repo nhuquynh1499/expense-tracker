@@ -70,6 +70,12 @@ function AddTransaction() {
 
   const handleSubmit = async () => {
     await axios.post("http://localhost:8080/api/transaction", data);
+    await axios.post("http://localhost:8080/api/report", {
+      month: new Date(data.time).getMonth() + 1,
+      year: new Date(data.time).getFullYear(),
+      groupId: data.groupId,
+      amount: data.amount,
+    });
     history.push("/");
   };
 
@@ -177,9 +183,10 @@ function AddTransaction() {
           />
         </div>
       </div>
-      <div className="container action">
-        <button> Hủy </button>
-        <button className="save" onClick={handleSubmit}> Lưu </button>
+      <div className="action">
+        <button className="save" onClick={handleSubmit}>
+          Lưu
+        </button>
       </div>
     </div>
   );

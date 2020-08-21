@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
 
 export const TransactionContext = React.createContext();
-export class TransactionProvider extends Component {
+export class TransactionProvider extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      transactions: [],
+      transactions: []
     };
+
   }
 
   componentDidMount() {
@@ -22,9 +23,12 @@ export class TransactionProvider extends Component {
   }
 
   render() {
+
     return (
       <TransactionContext.Provider
-        value={{ transactions: this.state.transactions }}
+        value={{
+          transactions: this.state.transactions
+        }}
       >
         {this.props.children}
       </TransactionContext.Provider>

@@ -26,18 +26,20 @@ function Planning() {
         </div>
       </Link>
       <div className="typePlan">
-        <button
-          className={value === 0 ? "active" : null}
+        <div
+          className={value === 0 ? "item active" : "item"}
           onClick={() => setValue(0)}
         >
-          Đang tiến hành
-        </button>
-        <button
-          className={value === 1 ? "active" : null}
+          <span>Đang tiến hành</span>
+          <div className="hrBottom"></div>
+        </div>
+        <div
+          className={value === 1 ? "item active" : "item"}
           onClick={() => setValue(1)}
         >
-          Kết thúc
-        </button>
+          <span>Kết thúc</span>
+          <div className="hrBottom"></div>
+        </div>
       </div>
       <div className="mainPlan">
         {planning.length > 0 &&

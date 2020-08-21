@@ -41,48 +41,39 @@
 }
 
 .typePlan {
-  /* margin-top: -40px; */
-  margin-left: 20px;
-  margin-right: 20px;
-  position: absolute;
+  padding-bottom: 5px;
+  /* position: absolute; */
   /* top: -50%; */
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   /* margin-top: -55px; */
   display: flex;
-  /* justify-content: center; */
-  z-index: 2;
+  justify-content: center;
+  z-index: 5;
   /* box-shadow: 0px 5px 5px #dddddd; */
   border-radius: 50vh;
   /* background-color: #ffffff; */
 }
 
-.typePlan button {
-  background-color: #0077b6;
-  color: #fff;
+.typePlan .item {
+  color: #ffffff80;
   cursor: pointer;
-  border: none;
-  padding: 20px;
   font-weight: 600;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  margin-right: 3px;
+  margin-right: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.typePlan button:focus {
-  outline: none;
+
+.typePlan .item.active {
+  color: #fff;
 }
 
-.typePlan button.active {
-  background-color: #ffffff;
-  color: #000000;
-  font-weight: 600;
-}
-
-.mainPlan {
+.typePlan .item.active .hrBottom{
   background-color: #fff;
-  margin-top: 27px;
-  margin-left: 20px;
-  margin-right: 20px;
+  width: 50%;
+  height: 3px;
+  border-radius: 5px;
 }
 
 .planning .MuiTabs-flexContainer {
