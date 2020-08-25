@@ -56,7 +56,7 @@ function Transaction() {
           <img src={AddIcon} alt="icon" className="icon" />
         </div>
       </Link>
-      <div className="filterDate">
+      <div className="filter">
         <div
           className={
             date.getMonth() + 1 === new Date().getMonth() ? "item active" : "item"

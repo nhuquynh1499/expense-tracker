@@ -1,85 +1,98 @@
-.addTransaction .container {
+.addTransaction {
   background-color: #ffffff;
   margin: 20px;
   border-radius: 10px;
 }
 
-.addTransaction .container .item {
+.choiceType {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  background-color: #fff;
 }
 
-.container .item input {
+.choiceType button {
+  background-color: #fff;
+  border: 1px solid #0077b6;
+  padding: 10px 0px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-weight: 600;
+  border-radius: 50vh;
+  margin: 0px 5px;
+}
+
+.choiceType button:focus {
+  outline: none;
+}
+
+.choiceType button.active {
+  background-color: #0077b6;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50vh;
+  border: none;
+}
+
+.addTransaction .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+.addTransaction .item input {
   border: none;
   font-size: 18px;
+}
+
+.addTransaction .item input:focus {
+  outline: none;
+}
+
+.addTransaction .amount {
+  flex-direction: column;
+}
+
+.addTransaction .amount p {
+  font-weight: 600;
+}
+
+.addTransaction .amount input {
+  text-align: center;
+  font-size: 40px;
   width: 100%;
 }
 
-.container .item input:focus {
-  outline: none
-}
-
-.container .item .icon {
-  min-width: 40px;
-  height: 40px;
-  margin: 0px 30px;
-  color: #666666;
-  display: grid;
-  place-items: center;
-}
-
-.container .item .icon .imgIcon {
+.addTransaction .item .imgIcon {
   height: 24px;
   width: 24px;
 }
 
-.container .item .vnd {
-  border: 1px solid #dddddd;
-  background-color: #F5F5F8;
-  border-radius: 3px;
-  min-width: 40px;
-}
-
-.container .group {
-  cursor: pointer;
-}
-
-.container .group .icon {
-  background-color: #F5F5F8;
-  border-radius: 50%;
-  background-size: cover;
-}
-
-.container .group .content input {
-  font-size: 18px;
-  flex-grow: 2;
-  background-color: #fff;
-}
-
-.container .item .content {
-  flex-grow: 2;
-  border-bottom: 1px solid #F5F5F8;
+.addTransaction .item .content {
   padding: 20px 20px 20px 0px;
   display: flex;
   align-items: center;
 }
 
-.container .item:last-child .content {
-  border-bottom: none;
+.group {
+  cursor: pointer;
+  flex-wrap: wrap;
+  /* overflow-x: scroll; */
+  align-items: flex-start !important;
 }
 
-.container .item .amount {
-  flex-direction: column;
-  align-items: flex-start;
+/* .group .icon {
+  background-color: #f5f5f8;
+  border-radius: 50%;
+  background-size: cover;
 }
 
-.container .item .amount p {
-  margin-bottom: 3px;
-}
-
-.container .item .amount input {
-  font-size: 36px;
-}
+.group .content input {
+  font-size: 18px;
+  flex-grow: 2;
+  background-color: #fff;
+} */
 
 .action {
   display: flex;
@@ -90,27 +103,22 @@
 
 .action button {
   border: none;
-  background-color: #fff;
+  background-color: #0077b6;
   padding: 15px;
   border-radius: 50vh;
   font-size: 16px;
-  cursor: pointer; 
+  cursor: pointer;
   font-weight: 600;
   color: #fff;
   width: 100%;
   margin: 0px 20px;
 }
 
-
-.action .save {
-  background-color: #0077b6;
-}
-
 .action button:focus {
   outline: none;
 }
 
-.Modal {
+/* .Modal {
   background-color: #fff;
   width: 80%;
   height: 80%;
@@ -122,49 +130,4 @@
 
 .Modal:focus {
   outline: none;
-}
-
-.Modal .headerModal {
-  display: flex;
-  justify-content: center;
-  padding: 10px 0px;
-  position: sticky;
-  top: 0;
-  background-color: #fff;
-  border-bottom: 1px solid #cccccc;
-  box-shadow: 0px 5px 5px #dddddd;
-
-}
-
-.Modal .headerModal .wrappedButton {
-  border-radius: 50vh;
-  background-color: #cae2fd;
-}
-
-.Modal .headerModal button {
-  background-color: #cae2fd;
-  padding: 10px 0px;
-  cursor: pointer;
-  border: none;
-  padding: 10px 15px;
-  font-weight: 600;
-  border-radius: 50vh;
-}
-
-.Modal .headerModal button:focus {
-  outline: none;
-}
-
-.Modal .headerModal button.active {
-  background-color: #0077b6;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 50vh;
-}
-
-.Modal .mainModal {
-  overflow-y: scroll;
-  height: 80%;
-}
-
-
+} */

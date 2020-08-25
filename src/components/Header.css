@@ -41,7 +41,7 @@
   text-align: center;
 }
 
-.header .addTransaction {
+.header .addTransactionHeader {
   display: flex !important;
   flex-direction: row;
   text-align: center;
@@ -50,11 +50,11 @@
   padding: 20px;
 }
 
-.header .addTransaction .name {
+.header .addTransactionHeader .name {
   flex-grow: 2;
   text-align: center;
 }
 
-.header .addTransaction .backIcon {
+.header .addTransactionHeader .backIcon {
   color: #fff;
 }

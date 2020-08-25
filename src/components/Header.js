@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom'; 
+import { Link } from "react-router-dom";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -23,13 +23,7 @@ function Header() {
       >
         <h2 className="title">Transactions</h2>
       </div>
-      <div
-        className={
-          isActive === "/add-transaction" || isActive === "/"
-            ? "addTransaction item active"
-            : "item"
-        }
-      >
+      <div className={ isActive === "/add-transaction" ? "addTransactionHeader item active" : "item" }>
         <Link to="/transaction">
           <ArrowBackIosIcon className="backIcon" />
         </Link>

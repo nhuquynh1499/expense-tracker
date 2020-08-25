@@ -25,7 +25,7 @@ function Planning() {
           <img src={AddIcon} alt="icon" className="icon" />
         </div>
       </Link>
-      <div className="typePlan">
+      <div className="filter">
         <div
           className={value === 0 ? "item active" : "item"}
           onClick={() => setValue(0)}

@@ -3,11 +3,11 @@ import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-import "./Chart.css";
+import "./ChartType.css";
 
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 
-export default function Chart(props) {
+export default function ChartType(props) {
   const { chartData } = props;
   const chartConfigs = {
     type: "pie2d",

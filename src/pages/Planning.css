@@ -40,42 +40,6 @@
   height: 15px;
 }
 
-.typePlan {
-  padding-bottom: 5px;
-  /* position: absolute; */
-  /* top: -50%; */
-  transform: translateY(-100%);
-  /* margin-top: -55px; */
-  display: flex;
-  justify-content: center;
-  z-index: 5;
-  /* box-shadow: 0px 5px 5px #dddddd; */
-  border-radius: 50vh;
-  /* background-color: #ffffff; */
-}
-
-.typePlan .item {
-  color: #ffffff80;
-  cursor: pointer;
-  font-weight: 600;
-  margin-right: 20px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-.typePlan .item.active {
-  color: #fff;
-}
-
-.typePlan .item.active .hrBottom{
-  background-color: #fff;
-  width: 50%;
-  height: 3px;
-  border-radius: 5px;
-}
-
 .planning .MuiTabs-flexContainer {
   width: 100vw !important;
   display: flex;

@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ReportItem from "../components/ReportItem";
-import Chart from "../components/Chart";
-import { GroupContext } from "../contexts/Group";
+import ReportType from "../components/ReportType";
+import ChartGeneral from '../components/ChartGeneral';
+
 import "./Report.css";
 
 function Report() {
   const [reports, setReports] = useState([]);
-  const backgroundColor = [
-    "#989BCF",
-    "#66C4BE",
-    "#E7716E",
-    "#F5C431",
-    "#62B58E",
-    "#BC95DF",
-  ];
-  let listGroup, listAmount;
+  const [type, setType] = useState(true);
+  let listGroupInflow, listAmountInflow, listGroupOutflow, listAmountOutflow;
 
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(
-        `http://localhost:8080/api/report?m${new Date().getMonth() + 1}=&y=${new Date().getFullYear()}`
+        `http://localhost:8080/api/report?m${
+          new Date().getMonth() + 1
+        }=&y=${new Date().getFullYear()}`
       );
       setReports(res.data);
     }
@@ -28,40 +23,45 @@ function Report() {
   }, []);
 
   if (reports[0]) {
-    listGroup = Object.keys(reports[0].listTransaction);
-    listAmount = Object.values(reports[0].listTransaction);
+    listGroupOutflow = Object.keys(reports[0].listOutflow);
+    listAmountOutflow = Object.values(reports[0].listOutflow);
+    listGroupInflow = Object.keys(reports[0].listInflow);
+    listAmountInflow = Object.values(reports[0].listInflow);
   }
 
   return (
     <div className="report">
-      <div className="sum">
-        <p>Khoản chi</p>
-        <p className="amount">{Number(50000).toLocaleString()}</p>
+      <div className="filter">
+        <div
+          className={type ? "item active" : "item"}
+          onClick={() => {setType(true)}}
+        >
+          <span>Khoản chi</span>
+          <div className="hrBottom"></div>
+        </div>
+        <div
+          className={type === false ? "item active" : "item"}
+          onClick={() => {setType(false)}}
+        >
+          <span>Khoản thu</span>
+          <div className="hrBottom"></div>
+        </div>
       </div>
-      <GroupContext.Consumer>
-        {({ getInforGroup }) => {
-          let data;
-          if (listGroup && listAmount) {
-            data = listGroup.map((item, index) => {
-              return {
-                label: getInforGroup(item) ? getInforGroup(item).name : null,
-                value: listAmount[index],
-              };
-            });
-          }
-          return data && <Chart chartData={data} />;
-        }}
-      </GroupContext.Consumer>
-      {listGroup?.map((item, index) => {
-        return (
-          <ReportItem
-            key={index}
-            groupId={item}
-            amount={listAmount[index]}
-            bgColor={backgroundColor[index]}
-          />
-        );
-      })}
+      <ChartGeneral />
+      {type === true && (
+        <ReportType
+          type={type}
+          listGroup={listGroupOutflow}
+          listAmount={listAmountOutflow}
+        />
+      )}
+      {type === false && (
+        <ReportType
+          type={type}
+          listGroup={listGroupInflow}
+          listAmount={listAmountInflow}
+        />
+      )}
     </div>
   );
 }

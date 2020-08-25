@@ -1,0 +1,20 @@
+.reportType {
+  background-color: #f5f5f8;
+}
+
+.reportType .sum {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.reportType .sum p {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.reportType .sum .amount {
+  color: red;
+  font-weight: 600;
+}
