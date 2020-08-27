@@ -20,10 +20,22 @@ function ReportType({ type, listGroup, listAmount }) {
 
   return (
     <div className="reportType">
-      <div className="sum">
-        <p>{type ? "Khoản chi" : "Khoản thu"}</p>
-        <p className="amount">{Number(sumAmount(listAmount)).toLocaleString()}</p>
-      </div>
+      {type ? (
+        <div className="sum outflow">
+          <p>Khoản chi</p>
+          <p className="amount">
+            {Number(sumAmount(listAmount)).toLocaleString()}
+          </p>
+        </div>
+      ) : (
+        <div className="sum inflow">
+          <p>"Khoản thu"</p>
+          <p className="amount">
+            {Number(sumAmount(listAmount)).toLocaleString()}
+          </p>
+        </div>
+      )}
+
       {/* Chart data */}
       <GroupContext.Consumer>
         {({ getInforGroup }) => {

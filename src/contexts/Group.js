@@ -26,7 +26,7 @@ export class GroupProvider extends Component {
   getInforGroup(id) {
     const { groups } = this.state;
     const group = groups.find((item) => item._id === id);
-    return group ? { name: group.name, icon: group.icon } : null;
+    return group ? { name: group.name, icon: group.icon, addSum: group.addSum } : null;
   }
 
   render() {

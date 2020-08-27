@@ -14,7 +14,14 @@
   font-weight: 500;
 }
 
+.reportType .outflow .amount{
+  color: #E44B65;
+}
+
+.reportType .inflow .amount{
+  color: #43aa8b;
+}
+
 .reportType .sum .amount {
-  color: red;
   font-weight: 600;
 }

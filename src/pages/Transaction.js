@@ -80,9 +80,12 @@ function Transaction() {
         </div>
       </div>
       <div className="listTransaction">
-        {value.map((date, index) => (
+        {value.length > 0 && value.map((date, index) => (
           <CostPerDay date={date} key={index} />
         ))}
+        {
+          value.length <= 0 && <h1 className="noTransaction">Không có giao dịch</h1>
+        }
       </div>
     </div>
   );

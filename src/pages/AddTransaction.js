@@ -84,6 +84,7 @@ function AddTransaction() {
       groupId: data.groupId,
       amount: data.amount,
     });
+    await axios.put("http://localhost:8080/api/planning", data);
     history.push("/");
   };
 

@@ -51,7 +51,7 @@ export default function ChartGeneral() {
       subcaption: "2016-2017",
       bgColor: "#f5f5f8",
       yaxisname: "Open Play Goals",
-      palettecolors: "#E64571, #88D786",
+      palettecolors: "#E44B65, #43aa8b",
       plotgradientcolor: " ",
       theme: "fusion",
       yaxismaxvalue: "30",

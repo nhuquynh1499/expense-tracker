@@ -4,7 +4,6 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import "./PlanItem.css";
 
 function PlanItem(props) {
-  console.log(props.planning);
   const { groupId, goal, amount, dateStart, dateEnd } = props.planning;
 
   function formatDay(date) {
@@ -42,7 +41,7 @@ function PlanItem(props) {
         </GroupContext.Consumer>
         <div className="number">
           <span className="goal">{Number(goal).toLocaleString()}</span>
-          <span className="amount">Còn lại {Number(goal - amount).toLocaleString()}</span>
+          <span className="amount">Còn lại {Number(goal + amount).toLocaleString()}</span>
         </div>
       </div>
       <LinearProgress className="process" variant="determinate" value={amount / goal * 100} />
