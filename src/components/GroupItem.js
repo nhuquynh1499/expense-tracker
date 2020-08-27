@@ -7,7 +7,7 @@ function GroupItem({ group, onClick }) {
       <img src={group.icon} alt="icon" />
       <p>{group.name}</p>
     </div>
-  );
+  );  
 }
 
 export default GroupItem;

@@ -1,9 +1,7 @@
 .GroupItem {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  margin-left: 12px;
-  min-width: 50px;
+  padding: 20px;
 }
 
 .GroupItem:hover {
@@ -12,10 +10,11 @@
 }
 
 .GroupItem img{
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 }
 
 .GroupItem p {
-  font-size: 12px;
+  font-size: 18px;
+  padding-left: 20px;
 }

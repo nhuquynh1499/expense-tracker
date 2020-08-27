@@ -1,18 +1,20 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-// import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import SubjectIcon from "@material-ui/icons/Subject";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import EventIcon from "@material-ui/icons/Event";
+import NotesIcon from "@material-ui/icons/Notes";
+import { Modal } from "@material-ui/core";
 import { GroupContext } from "../contexts/Group";
 import GroupItem from "../components/GroupItem";
 import "./AddTransaction.css";
 
 function AddTransaction() {
   const history = useHistory();
-  // const [open, setOpen] = React.useState(false);
-  const [type, setType] = React.useState(0);
-  const [data, setData] = React.useState({
+  const [addSum, setAddSum] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [type, setType] = useState(0);
+  const [data, setData] = useState({
     groupId: "",
     amount: 0,
     note: "",
@@ -21,17 +23,22 @@ function AddTransaction() {
   const nameGroup = useRef(null);
   const iconGroup = useRef(null);
 
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value;
+    let value = event.target.value;
+    if (name === "amount") {
+      value = addSum
+        ? Math.abs(value)
+        : -1 * Math.abs(value);
+    }
     setData({
       ...data,
       [name]: value,
@@ -44,14 +51,16 @@ function AddTransaction() {
       "style",
       "background-image: url(" + icon + ")"
     );
-    const amount = addSum ? Math.abs(data.amount) : -1 * Math.abs(data.amount);
+    const amount = addSum
+        ? Math.abs(data.amount)
+        : -1 * Math.abs(data.amount);
     setData({
       ...data,
-      amount: amount,
       groupId: id,
+      amount: amount
     });
-
-    // setOpen(false);
+    setAddSum(addSum);
+    setOpen(false);
   }
 
   function getToday() {
@@ -80,27 +89,6 @@ function AddTransaction() {
 
   return (
     <div className="addTransaction">
-      <div className="choiceType">
-        <button
-          className={type === 2 ? "active" : null}
-          onClick={() => setType(2)}
-        >
-          Khoản vay
-        </button>
-        <button
-          className={type === 0 ? "active" : null}
-          onClick={() => setType(0)}
-        >
-          Khoản chi
-        </button>
-
-        <button
-          className={type === 1 ? "active" : null}
-          onClick={() => setType(1)}
-        >
-          Khoản thu
-        </button>
-      </div>
       <div className="item amount">
         <p>Số tiền</p>
         <input
@@ -111,44 +99,69 @@ function AddTransaction() {
           onChange={handleChange}
         />
       </div>
-      {/* <div className="item group" onClick={handleOpen}>
-          <div ref={iconGroup} className="icon"></div>
-          <div className="content">
-            <input
-              name="group"
-              ref={nameGroup}
-              placeholder="Chọn nhóm"
-              disabled
-            />
-            <NavigateNextIcon className="moreIcon" />
-          </div>
-        </div> */}
-      <div className="item group">
-        <GroupContext.Consumer>
-          {({ groups }) => {
-            return groups.map((group, index) => {
-              return (
-                group.type === type && (
-                  <GroupItem
-                    group={group}
-                    key={index}
-                    onClick={() =>
-                      selectGroup(
-                        group._id,
-                        group.name,
-                        group.icon,
-                        group.addSum
-                      )
-                    }
-                  />
-                )
-              );
-            });
-          }}
-        </GroupContext.Consumer>
+      <div className="item group" onClick={handleOpen}>
+        <div ref={iconGroup} className="imgIcon iconGroup"></div>
+        <div className="content">
+          <input
+            name="group"
+            ref={nameGroup}
+            placeholder="Chọn nhóm"
+            disabled
+          />
+          <NavigateNextIcon className="moreIcon" />
+        </div>
       </div>
+      <Modal open={open} onClose={handleClose}>
+        <div className="Modal">
+          <div className="choiceType">
+            <button
+              className={type === 2 ? "active" : null}
+              onClick={() => setType(2)}
+            >
+              Khoản vay
+            </button>
+            <button
+              className={type === 0 ? "active" : null}
+              onClick={() => setType(0)}
+            >
+              Khoản chi
+            </button>
+
+            <button
+              className={type === 1 ? "active" : null}
+              onClick={() => setType(1)}
+            >
+              Khoản thu
+            </button>
+          </div>
+          <div className="showGroup">
+            <GroupContext.Consumer>
+              {({ groups }) => {
+                return groups.map((group, index) => {
+                  return (
+                    group.type === type && (
+                      <GroupItem
+                        group={group}
+                        key={index}
+                        onClick={() =>
+                          selectGroup(
+                            group._id,
+                            group.name,
+                            group.icon,
+                            group.addSum
+                          )
+                        }
+                      />
+                    )
+                  );
+                });
+              }}
+            </GroupContext.Consumer>
+          </div>
+        </div>
+      </Modal>
       <div className="item">
-        <SubjectIcon className="imgIcon" />
+        <NotesIcon className="imgIcon" />
         <input
           type="text"
           name="note"

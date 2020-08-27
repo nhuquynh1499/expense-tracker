@@ -2,123 +2,69 @@
   background-color: #ffffff;
   margin: 20px;
   border-radius: 10px;
-}
-
-.choiceType {
-  display: flex;
-  justify-content: center;
-  padding: 10px 0px;
-  background-color: #fff;
-}
-
-.choiceType button {
-  background-color: #fff;
-  border: 1px solid #0077b6;
-  padding: 10px 0px;
-  cursor: pointer;
-  padding: 10px 15px;
-  font-weight: 600;
-  border-radius: 50vh;
-  margin: 0px 5px;
-}
-
-.choiceType button:focus {
-  outline: none;
-}
-
-.choiceType button.active {
-  background-color: #0077b6;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 50vh;
-  border: none;
+  padding: 20px;
 }
 
 .addTransaction .item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 20px;
+  text-align: center;
+}
+
+.addTransaction .amount {
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+
+.addTransaction .amount p {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.addTransaction .amount input {
+  text-align: center;
+  font-size: 50px!important;
+  padding: 0px!important;
 }
 
 .addTransaction .item input {
   border: none;
   font-size: 18px;
+  background-color: #ffffff;
+  padding: 20px 0px 20px 20px;
+  width: 100%;
 }
 
 .addTransaction .item input:focus {
   outline: none;
 }
 
-.addTransaction .amount {
-  flex-direction: column;
-}
-
-.addTransaction .amount p {
-  font-weight: 600;
-}
-
-.addTransaction .amount input {
-  text-align: center;
-  font-size: 40px;
-  width: 100%;
-}
-
 .addTransaction .item .imgIcon {
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
+}
+
+.addTransaction .item .iconGroup {
+  background-color: #f5f5f8;
+  border-radius: 50%;
 }
 
 .addTransaction .item .content {
-  padding: 20px 20px 20px 0px;
+  flex-grow: 3;
   display: flex;
   align-items: center;
 }
 
-.group {
-  cursor: pointer;
-  flex-wrap: wrap;
-  /* overflow-x: scroll; */
-  align-items: flex-start !important;
-}
-
-/* .group .icon {
-  background-color: #f5f5f8;
-  border-radius: 50%;
-  background-size: cover;
-}
-
-.group .content input {
-  font-size: 18px;
+.addTransaction .item .content input {
   flex-grow: 2;
-  background-color: #fff;
-} */
-
-.action {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
 }
 
-.action button {
-  border: none;
-  background-color: #0077b6;
-  padding: 15px;
-  border-radius: 50vh;
-  font-size: 16px;
+.addTransaction .group, 
+.addTransaction .group input {
   cursor: pointer;
-  font-weight: 600;
-  color: #fff;
-  width: 100%;
-  margin: 0px 20px;
 }
 
-.action button:focus {
-  outline: none;
-}
-
-/* .Modal {
+.Modal {
   background-color: #fff;
   width: 80%;
   height: 80%;
@@ -130,4 +76,61 @@
 
 .Modal:focus {
   outline: none;
-} */
+}
+
+.Modal .showGroup {
+  overflow-y: scroll;
+  height: 80%;
+}
+
+.Modal .choiceType {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+  background-color: #fff;
+}
+
+.Modal .choiceType button {
+  background-color: #fff;
+  border: 1px solid #0077b6;
+  padding: 10px 0px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-weight: 600;
+  border-radius: 50vh;
+  margin: 0px 5px;
+}
+
+.Modal .choiceType button:focus {
+  outline: none;
+}
+
+.Modal .choiceType button.active {
+  background-color: #0077b6;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50vh;
+  border: none;
+}
+
+.action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.action button {
+  border: none;
+  background-color: #0077b6;
+  padding: 15px 30px;
+  border-radius: 50vh;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+}
+
+.action button:focus {
+  outline: none;
+}
