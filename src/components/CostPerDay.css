@@ -12,9 +12,8 @@
 }
 
 .date h1 {
-  font-size: 50px;
+  font-size: 48px;
   font-weight: 500;
-  /* min-width: 70px; */
 }
 
 .date .infor {
@@ -23,13 +22,12 @@
 }
 
 .date .infor h3 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .date .infor p {
   margin-top: 5px;
-  font-size: 16px;
   color: #888888;
 }
 

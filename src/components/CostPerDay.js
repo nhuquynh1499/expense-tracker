@@ -22,13 +22,13 @@ function CostPerDay({ date }) {
   }, [day, month, year]);
 
   const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    "Chủ nhật",
+    "Thứ hai",
+    "Thứ ba",
+    "Thứ tư",
+    "Thứ năm",
+    "Thứ sáu",
+    "Thứ bảy",
   ];
 
   const sumAmount = () => {

@@ -3,6 +3,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-size: 14px;
 }
 
 .App .HeaderAndMain {
@@ -15,16 +16,11 @@
 
 .filter {
   padding-bottom: 5px;
-  /* position: absolute; */
-  /* top: -50%; */
   transform: translateY(-100%);
-  /* margin-top: -55px; */
   display: flex;
   justify-content: center;
   z-index: 5;
-  /* box-shadow: 0px 5px 5px #dddddd; */
   border-radius: 50vh;
-  /* background-color: #ffffff; */
 }
 
 .filter .item {
@@ -40,7 +36,6 @@
 .filter .item.active {
   color: #fff;
 }
-
 
 .filter .item.active .hrBottom{
   background-color: #fff;
@@ -64,11 +59,9 @@
 
   .HeaderAndMain {
     order: 2;
-    flex-grow: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 0px 50px;
-
   }
 }

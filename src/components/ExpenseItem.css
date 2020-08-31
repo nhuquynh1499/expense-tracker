@@ -14,13 +14,11 @@
 }
 
 .expenseItem .infor .category {
-  font-size: 18px;
   font-weight: 500;
 }
 
 .expenseItem .infor .notes {
   margin-top: 5px;
-  font-size: 16px;
   color: #888888;
 }
 

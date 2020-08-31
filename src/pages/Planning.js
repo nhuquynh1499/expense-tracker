@@ -40,17 +40,17 @@ function Planning() {
       </Link>
       <div className="filter">
         <div
-          className={value === 0 ? "item active" : "item"}
-          onClick={() => setValue(0)}
-        >
-          <span>Đang tiến hành</span>
-          <div className="hrBottom"></div>
-        </div>
-        <div
           className={value === 1 ? "item active" : "item"}
           onClick={() => setValue(1)}
         >
           <span>Kết thúc</span>
+          <div className="hrBottom"></div>
+        </div>
+        <div
+          className={value === 0 ? "item active" : "item"}
+          onClick={() => setValue(0)}
+        >
+          <span>Đang tiến hành</span>
           <div className="hrBottom"></div>
         </div>
       </div>
