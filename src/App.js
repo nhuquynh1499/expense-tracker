@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { GroupProvider } from "./contexts/Group";
 import { TransactionProvider } from "./contexts/Transaction";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 import Transaction from "./pages/Transaction";
 import AddTransaction from "./pages/AddTransaction";
 import Report from "./pages/Report";
@@ -22,6 +24,12 @@ function App() {
               <Header />
               <div className="main">
                 <Switch>
+                  <Route path="/home">
+                    <Home />
+                  </Route>
+                  <Route path="/signup">
+                    <SignUp />
+                  </Route>
                   <Route path="/transaction">
                     <Transaction />
                   </Route>
