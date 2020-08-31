@@ -85,7 +85,7 @@ function Transaction() {
         {value.length > 0 ? (
           value.map((date, index) => <CostPerDay date={date} key={index} />)
         ) : (
-          <h1 className="noTransaction">Không có giao dịch</h1>
+          <h1 className="nodata">Không có giao dịch</h1>
         )}
       </div>
     </div>

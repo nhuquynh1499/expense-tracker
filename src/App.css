@@ -47,6 +47,12 @@
   width: 50%;
   height: 3px;
   border-radius: 5px;
+  margin-top: 5px;
+}
+
+.nodata {
+  color: #aaaaaa;
+  text-align: center;
 }
 
 

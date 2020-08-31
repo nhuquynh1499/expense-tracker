@@ -17,7 +17,7 @@ export default function ChartType(props) {
       chart: {
         // caption: "Thống kê chi tiêu",
         // subCaption: "Tháng này",
-        bgColor: "#f5f5f8",
+        bgColor: "#ffffff",
         numberSuffix: " VND",
         showPercentInTooltip: "0",
         decimals: "1",

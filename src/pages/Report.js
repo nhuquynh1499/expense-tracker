@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReportType from "../components/ReportType";
-import ChartGeneral from '../components/ChartGeneral';
+import ChartGeneral from "../components/ChartGeneral";
+import KeyboardCapslockIcon from "@material-ui/icons/KeyboardCapslock";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
 import "./Report.css";
 
 function Report() {
   const [reports, setReports] = useState([]);
-  const [type, setType] = useState(true);
+  const [type, setType] = useState(null);
+  const [date, setDate] = useState(new Date());
   let listGroupInflow, listAmountInflow, listGroupOutflow, listAmountOutflow;
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData(m, y) {
       const res = await axios.get(
-        `http://localhost:8080/api/report?m=${
-          new Date().getMonth() + 1
-        }&y=${new Date().getFullYear()}`
+        `http://localhost:8080/api/report?m=${m}&y=${y}`
       );
       setReports(res.data);
     }
-    fetchData();
-  }, []);
+    fetchData(date.getMonth() + 1, date.getFullYear());
+  }, [date]);
 
   if (reports[0]) {
     listGroupOutflow = Object.keys(reports[0].listOutflow);
@@ -29,38 +30,98 @@ function Report() {
     listAmountInflow = Object.values(reports[0].listInflow);
   }
 
+  function getMonthBefore() {
+    const date = new Date();
+    const day = date.getDate();
+    let month = date.getMonth() - 1;
+    let year = date.getFullYear();
+    if (date.getMonth() - 1 < 0) {
+      month = 11;
+      year = date.getFullYear() - 1;
+    }
+    return new Date(year, month, day);
+  }
+
   return (
     <div className="report">
       <div className="filter">
         <div
-          className={type ? "item active" : "item"}
-          onClick={() => {setType(true)}}
+          className={
+            date.getMonth() + 1 === new Date().getMonth()
+              ? "item active"
+              : "item"
+          }
+          onClick={() => {
+            const beforeDate = getMonthBefore();
+            setDate(beforeDate);
+          }}
         >
-          <span>Khoản chi</span>
+          <span>Tháng trước</span>
           <div className="hrBottom"></div>
         </div>
         <div
-          className={type === false ? "item active" : "item"}
-          onClick={() => {setType(false)}}
+          className={
+            date.getMonth() === new Date().getMonth() ? "item active" : "item"
+          }
+          onClick={() => setDate(new Date())}
         >
-          <span>Khoản thu</span>
+          <span>Tháng này</span>
           <div className="hrBottom"></div>
         </div>
       </div>
-      <ChartGeneral />
-      {type === true && (
-        <ReportType
-          type={type}
-          listGroup={listGroupOutflow}
-          listAmount={listAmountOutflow}
-        />
-      )}
-      {type === false && (
-        <ReportType
-          type={type}
-          listGroup={listGroupInflow}
-          listAmount={listAmountInflow}
-        />
+      {reports?.length > 0 ? (
+        <div>
+          <ChartGeneral date={date} />
+          <div className="choiceType">
+            <div className={type === null ? "more" : "unshow"}>
+              Xem chi tiết
+              <ArrowForwardIcon className="icon" />
+            </div>
+            <div
+              className={type === true ? "item outflow active" : "item outflow"}
+              onClick={() => {
+                setType(true);
+              }}
+            >
+              <div className="color"></div>
+              <p>Khoản chi</p>
+            </div>
+            <div
+              className={type === false ? "item inflow active" : "item inflow"}
+              onClick={() => {
+                setType(false);
+              }}
+            >
+              <div className="color"></div>
+              <p>Khoản thu</p>
+            </div>
+            <div
+              className={type !== null ? "short" : "unshow"}
+              onClick={() => setType(null)}
+            >
+              <KeyboardCapslockIcon />
+              <p>Thu gọn</p>
+            </div>
+          </div>
+          {type === true && (
+            <ReportType
+              type={type}
+              listGroup={listGroupOutflow}
+              listAmount={listAmountOutflow}
+            />
+          )}
+          {type === false && (
+            <ReportType
+              type={type}
+              listGroup={listGroupInflow}
+              listAmount={listAmountInflow}
+            />
+          )}
+        </div>
+      ) : (
+        <div className="nodata">
+          <h1>Không có giao dịch</h1>
+        </div>
       )}
     </div>
   );

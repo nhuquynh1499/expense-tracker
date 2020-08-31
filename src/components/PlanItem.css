@@ -41,6 +41,7 @@
 .headerPlan .number .goal {
   font-weight: 600;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .process {
@@ -57,6 +58,19 @@
   display: flex;
   justify-content: space-between;
   color: #888888;
+}
+
+.time .pass,
+.time .fail {
+  font-weight: 600;
+}
+
+.time .pass {
+  color: #5AAB8B;
+}
+
+.time .fail {
+  color: #E44B65;
 }
 
 

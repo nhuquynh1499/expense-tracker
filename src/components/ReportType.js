@@ -29,7 +29,7 @@ function ReportType({ type, listGroup, listAmount }) {
         </div>
       ) : (
         <div className="sum inflow">
-          <p>"Khoản thu"</p>
+          <p>Khoản thu</p>
           <p className="amount">
             {Number(sumAmount(listAmount)).toLocaleString()}
           </p>

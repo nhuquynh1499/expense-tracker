@@ -9,7 +9,7 @@ import "./ChartGeneral.css";
 
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 
-export default function ChartGeneral() {
+export default function ChartGeneral({ date }) {
   const [transactions, setTransactions] = useState(null);
   let listInflow = [],
     listOutflow = [];
@@ -18,25 +18,23 @@ export default function ChartGeneral() {
 
   // Lấy số ngày trong tháng
   function getNumberOfDays() {
-    const now = new Date();
     var isLeap =
-      now.getFullYear() % 4 === 0 &&
-      (now.getFullYear() % 100 !== 0 || now.getFullYear() % 400 === 0);
+      date.getFullYear() % 4 === 0 &&
+      (date.getFullYear() % 100 !== 0 || date.getFullYear() % 400 === 0);
     return [31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][
-      now.getMonth()
+      date.getMonth()
     ];
   }
 
   function getDayStartEndInWeek() {
     let dayStart = [],
       dayEnd = [];
-    const now = new Date();
     for (let day = 1; day <= getNumberOfDays(); day++) {
       if (day === 1) dayStart.push(day);
       if (day === getNumberOfDays()) dayEnd.push(day);
       const dayOfWeek = new Date(
-        now.getFullYear(),
-        now.getMonth(),
+        date.getFullYear(),
+        date.getMonth(),
         day
       ).getDay();
       if (dayOfWeek === 0) {
@@ -71,31 +69,22 @@ export default function ChartGeneral() {
       });
     });
     return result.map((item) => {
-      return { value: String(item) }
-    });;
+      return { value: String(item) };
+    });
   }
-
-  // dataInflow = weeksOfMonth().map((item) => {
-  //   return { value: "5000000" };
-  // });
-  // dataOutflow = weeksOfMonth().map(() => {
-  //   return { value: "-500000" };
-  // });
-
-  // console.log(dataInflow, dataOutflow);
 
   useEffect(() => {
     async function fetch() {
       const res = await axios.get(
         `http://localhost:8080/api/transaction?m=${
-          new Date().getMonth() + 1
-        }&y=${new Date().getFullYear()}`
+          date.getMonth() + 1
+        }&y=${date.getFullYear()}`
       );
       setTransactions(res.data);
     }
 
     fetch();
-  }, []);
+  }, [date]);
 
   transactions?.forEach((transaction) => {
     if (transaction.amount > 0) listInflow.push(transaction);
@@ -120,17 +109,14 @@ export default function ChartGeneral() {
     chart: {
       caption:
         "Báo cáo kết quả thu chi trong tháng " +
-        (new Date(Date.now()).getMonth() + 1),
+        (date.getMonth() + 1),
       bgColor: "#f5f5f8",
       yaxisname: "Open Play Goals",
       palettecolors: "#E44B65, #43aa8b",
       plotgradientcolor: " ",
       theme: "fusion",
-      yaxismaxvalue: "30",
-      showlegend: "1",
-      interactivelegend: "0",
-      showvalues: "0",
-      showsum: "0",
+      // interactivelegend: "0",
+      showlegend: "0",
     },
     categories: [
       {

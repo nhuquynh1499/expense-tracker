@@ -60,7 +60,7 @@ function Planning() {
             <PlanItem planning={item} key={index} />
           ))
         ) : (
-          <h1 className="noPlanning">Không có kế hoạch</h1>
+          <h1 className="nodata">Không có kế hoạch</h1>
         )}
       </div>
     </div>
