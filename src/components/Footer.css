@@ -20,6 +20,10 @@
   border-radius: 50vh;
   background-color: #ffffff;
 }
+/* 
+.footer .footerItem:hover {
+  background-color: #f5f5f8;
+} */
 
 .footer .footerItem.active {
   background-color: #0077b6;
@@ -45,4 +49,23 @@
 
 .footer .footerItem.active .icon {
   color: #ffffff;
+}
+
+@media only screen and (min-width: 992px) {
+  .footer {
+    order: 1;
+    flex-direction: column;
+    /* position: fixed; */
+    width: auto;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  .footer .footerItem {
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0px 10px;
+  }
 }

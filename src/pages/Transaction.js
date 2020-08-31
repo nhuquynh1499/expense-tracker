@@ -59,7 +59,9 @@ function Transaction() {
       <div className="filter">
         <div
           className={
-            date.getMonth() + 1 === new Date().getMonth() ? "item active" : "item"
+            date.getMonth() + 1 === new Date().getMonth()
+              ? "item active"
+              : "item"
           }
           onClick={() => {
             const beforeDate = getMonthBefore();
@@ -80,12 +82,11 @@ function Transaction() {
         </div>
       </div>
       <div className="listTransaction">
-        {value.length > 0 && value.map((date, index) => (
-          <CostPerDay date={date} key={index} />
-        ))}
-        {
-          value.length <= 0 && <h1 className="noTransaction">Không có giao dịch</h1>
-        }
+        {value.length > 0 ? (
+          value.map((date, index) => <CostPerDay date={date} key={index} />)
+        ) : (
+          <h1 className="noTransaction">Không có giao dịch</h1>
+        )}
       </div>
     </div>
   );

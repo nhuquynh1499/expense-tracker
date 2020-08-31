@@ -18,6 +18,19 @@ function Planning() {
     fetchData();
   }, []);
 
+  const getPlan = () => {
+    if (value === 0) {
+      return planning.filter((plan) => {
+        return Date.now() - new Date(plan.dateEnd).getTime() < 0;
+      });
+    } // Dang tien hanh
+    else {
+      return planning.filter((plan) => {
+        return Date.now() - new Date(plan.dateEnd).getTime() > 0;
+      });
+    }
+  };
+
   return (
     <div className="planning">
       <Link to="/add-planning" className="addPlanningIcon">
@@ -42,10 +55,13 @@ function Planning() {
         </div>
       </div>
       <div className="mainPlan">
-        {planning.length > 0 &&
-          planning.map((item, index) => (
+        {getPlan().length > 0 ? (
+          getPlan().map((item, index) => (
             <PlanItem planning={item} key={index} />
-          ))}
+          ))
+        ) : (
+          <h1 className="noPlanning">Không có kế hoạch</h1>
+        )}
       </div>
     </div>
   );

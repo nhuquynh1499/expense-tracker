@@ -105,6 +105,7 @@ function AddTransaction() {
         <div className="content">
           <input
             name="group"
+            defaultValue=""
             ref={nameGroup}
             placeholder="Chọn nhóm"
             disabled

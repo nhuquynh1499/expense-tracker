@@ -5,7 +5,11 @@
   flex-direction: column;
 }
 
-.App .main {
+.App .HeaderAndMain {
+  flex-grow: 2;
+}
+
+.App .HeaderAndMain .main{
   flex-grow: 2;
 }
 
@@ -43,4 +47,22 @@
   width: 50%;
   height: 3px;
   border-radius: 5px;
+}
+
+
+@media only screen and (min-width: 992px) {
+  .App {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .HeaderAndMain {
+    order: 2;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 50px;
+
+  }
 }

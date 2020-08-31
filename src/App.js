@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { GroupProvider } from "./contexts/Group";
 import { TransactionProvider } from "./contexts/Transaction";
 import Transaction from "./pages/Transaction";
@@ -22,28 +18,30 @@ function App() {
       <TransactionProvider>
         <Router>
           <div className="App">
-            <Header />
-            <div className="main">
-              <Switch>
-                <Route path="/transaction">
-                  <Transaction />
-                </Route>
-                <Route path="/add-transaction">
-                  <AddTransaction />
-                </Route>
-                <Route path="/report">
-                  <Report />
-                </Route>
-                <Route path="/planning">
-                  <Planning />
-                </Route>
-                <Route path="/user">
-                  <User />
-                </Route>
-                <Route path="/" exact>
-                  <Transaction />
-                </Route>
-              </Switch>
+            <div className="HeaderAndMain">
+              <Header />
+              <div className="main">
+                <Switch>
+                  <Route path="/transaction">
+                    <Transaction />
+                  </Route>
+                  <Route path="/add-transaction">
+                    <AddTransaction />
+                  </Route>
+                  <Route path="/report">
+                    <Report />
+                  </Route>
+                  <Route path="/planning">
+                    <Planning />
+                  </Route>
+                  <Route path="/user">
+                    <User />
+                  </Route>
+                  <Route path="/" exact>
+                    <Transaction />
+                  </Route>
+                </Switch>
+              </div>
             </div>
             <Footer />
           </div>

@@ -13,9 +13,9 @@ function Report() {
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(
-        `http://localhost:8080/api/report?m${
+        `http://localhost:8080/api/report?m=${
           new Date().getMonth() + 1
-        }=&y=${new Date().getFullYear()}`
+        }&y=${new Date().getFullYear()}`
       );
       setReports(res.data);
     }
