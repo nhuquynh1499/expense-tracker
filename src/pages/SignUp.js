@@ -75,7 +75,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <button className="formItem" onClick={handleSubmit}>
+            <button className="formItem btnSubmit" onClick={handleSubmit}>
               Sign up
             </button>
           </form>

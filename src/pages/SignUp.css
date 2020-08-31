@@ -3,7 +3,7 @@
   place-items: center;
 }
 
-.SignUp .Item{
+.SignUp .Item {
   width: 400px;
   display: inline-flex;
   flex-direction: column;
@@ -42,6 +42,7 @@
   border-radius: 5px;
   color: #fff;
   margin: 5px 0px;
+  cursor: pointer;
 }
 
 .SignUp .Item .BySocial img {
@@ -50,7 +51,7 @@
 }
 
 .SignUp .Item .BySocial.facebook {
-  background-color: #3578B7;
+  background-color: #3578b7;
 }
 
 .SignUp .Item .BySocial.facebook:hover {
@@ -62,7 +63,7 @@
 }
 
 .SignUp .Item .BySocial.google:hover {
-  background-color: #C23321;
+  background-color: #c23321;
 }
 
 .SignUp .Item .BySocial:focus {
@@ -128,14 +129,19 @@
   outline: none;
 }
 
-.SignUp .form-signup button {
-  background-color: #3578B7 !important;
+.SignUp .form-signup .btnSubmit {
+  background-color: #3578b7;
   color: #ffffff !important;
   font-weight: 600;
   font-size: 14px;
   margin: 15px 0px !important;
   align-items: center !important;
-  border-radius: 5px!important;
+  border-radius: 5px !important;
+  cursor: pointer;
+}
+
+.SignUp .form-signup .btnSubmit:hover {
+  background-color: #79b4db;
 }
 
 .SignUp .form-signup .formItem:focus {
@@ -150,7 +156,7 @@
 
 .SignUp .Change-Signin a {
   padding-left: 5px;
-  color: #3578B7;
+  color: #3578b7;
   font-weight: 600;
   text-decoration: none;
 }
