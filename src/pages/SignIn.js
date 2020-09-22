@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import logo from "../images/logo.svg";
-import "./SignUp.css";
+import FacebookIcon from "../images/facebook.svg";
+import GoogleIcon from "../images/google.svg";
+import "./SignIn.css";
 
-export default function SignUp() {
+export default function SignIn() {
   const [data, setData] = useState({
     contact: "",
     name: "",
@@ -35,7 +37,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className="SignUp">
+    <div className="SignIn">
       <div className="Item">
         <div>
           <img className="logo" src={logo} alt="logo" />
@@ -44,35 +46,46 @@ export default function SignUp() {
           <div>
             <h2>Tối ưu hóa việc quản lý tài chính cá nhân</h2>
           </div>
-          <form className="form-signup">
+          <form className="form-signIn">
             <div className="formItem">
-              <label for="email">Tài khoản</label>
+              <span>Tài khoản</span>
               <input
                 name="email"
-                id="email"
                 value={data.username}
                 onChange={handleChange}
               />
             </div>
             <div className="formItem">
-              <label for="password">Mật khẩu</label>
+              <span>Mật khẩu</span>
               <input
                 name="password"
-                id="password"
                 type="password"
                 value={data.password}
                 onChange={handleChange}
               />
             </div>
             <button className="formItem btnSubmit" onClick={handleSubmit}>
-              Đăng ký
+              Đăng nhập
             </button>
           </form>
+          <div className="or">
+            <div className="ngang"></div>
+            <span>OR</span>
+            <div className="ngang"></div>
+          </div>
+          <button className="BySocial facebook">
+            <img src={FacebookIcon} alt="FacebookIcon" />
+            <span>Đăng nhập bằng Facebook</span>
+          </button>
+          <button className="BySocial google">
+            <img src={GoogleIcon} alt="GoogleIcon" />
+            <span>Đăng nhập bằng Google</span>
+          </button>
         </div>
       </div>
       <div className="Item Change-Signin">
-        <span>Đã có tài khoản?</span>
-        <Link to="/signin">Đăng nhập</Link>
+        <span>Lần đầu tiên sử dụng?</span>
+        <Link to="/signup">Đăng ký</Link>
       </div>
     </div>
   );

@@ -8,7 +8,9 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 
 function Footer(props) {
   let { pathname } = useLocation();
+  const pathnameHadFooter = ["transaction", "report", "planning", "user"];
   const [isActive, setIsActive] = useState(pathname);
+
   useEffect(() => {
     setIsActive(pathname);
   }, [pathname]);
@@ -17,7 +19,7 @@ function Footer(props) {
   };
 
   return (
-    <div className="footer">
+    <div className={pathnameHadFooter.indexOf(isActive.substring(1)) !== -1 ? "footer" : "footer notShow"}>
       <Link
         className={
           isActive === "/transaction" || isActive === "/"

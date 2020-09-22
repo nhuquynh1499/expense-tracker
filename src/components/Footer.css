@@ -10,6 +10,10 @@
   min-width: 100px;
 }
 
+.footer.notShow {
+  display: none;
+}
+
 .footer .footerItem {
   cursor: pointer;
   text-decoration: none;
