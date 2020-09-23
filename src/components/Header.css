@@ -14,28 +14,18 @@
   text-transform: uppercase;
   font-weight: 600;
   color: #fff;
-  
+  padding: 0px;
 }
 
 .header .item.active {
   display: block;
 }
-/* 
-.header .transaction {
-  padding: 50px 40px;
-  background-image: linear-gradient(to right, #3578aa, #a4c7e0);
-} */
 
 .header .transaction p {
   font-size: 18px;
   font-style: italic;
   opacity: 0.8;
 }
-
-/* .header .planning {
-  padding: 50px 40px;
-  background-image: linear-gradient(to right, #3578aa, #a4c7e0);
-} */
 
 .header .user {
   text-align: center;
