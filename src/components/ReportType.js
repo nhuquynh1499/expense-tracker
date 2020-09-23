@@ -36,8 +36,7 @@ function ReportType({ type, listGroup, listAmount }) {
         </div>
       )}
 
-      {/* Chart data */}
-      <GroupContext.Consumer>
+      {/* <GroupContext.Consumer>
         {({ getInforGroup }) => {
           let data;
           if (listGroup && listAmount) {
@@ -50,7 +49,7 @@ function ReportType({ type, listGroup, listAmount }) {
           }
           return data && <ChartType chartData={data} />;
         }}
-      </GroupContext.Consumer>
+      </GroupContext.Consumer> */}
       {listGroup?.map((item, index) => {
         return (
           <ReportItem

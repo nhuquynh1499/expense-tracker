@@ -4,6 +4,7 @@
   align-items: center;
   margin: 20px;
   border-radius: 7px;
+  box-sizing: border-box;
 }
 
 .reportItem .iconCategory {

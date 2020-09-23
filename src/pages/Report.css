@@ -4,6 +4,7 @@
   align-items: center;
   position: relative;
 }
+
 .choiceType .item {
   display: flex;
   justify-content: center;
@@ -15,7 +16,10 @@
   padding: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
 
+.choiceType .item:hover {
+  background-color: #deefffad;
 }
 
 .choiceType .item.active {
@@ -43,6 +47,7 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 12px;
+  margin-right: 20px;
 }
 
 .choiceType .more .icon {
