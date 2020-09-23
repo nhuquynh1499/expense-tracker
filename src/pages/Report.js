@@ -8,7 +8,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import "./Report.css";
 
 function Report() {
-  const [reports, setReports] = useState([]);
+  const [report, setReport] = useState({});
   const [type, setType] = useState(null);
   const [date, setDate] = useState(new Date());
   let listGroupInflow, listAmountInflow, listGroupOutflow, listAmountOutflow;
@@ -18,16 +18,18 @@ function Report() {
       const res = await axios.get(
         `http://localhost:8080/api/report?m=${m}&y=${y}`
       );
-      setReports(res.data);
+      setReport(res.data);
     }
     fetchData(date.getMonth() + 1, date.getFullYear());
   }, [date]);
 
-  if (reports[0]) {
-    listGroupOutflow = Object.keys(reports[0].listOutflow);
-    listAmountOutflow = Object.values(reports[0].listOutflow);
-    listGroupInflow = Object.keys(reports[0].listInflow);
-    listAmountInflow = Object.values(reports[0].listInflow);
+  console.log(report);
+
+  if (report) {
+    listGroupOutflow = report.listOutflow ? Object.keys(report.listOutflow) : [];
+    listAmountOutflow = report.listOutflow ? Object.values(report.listOutflow) : [];
+    listGroupInflow = report.listInflow ? Object.keys(report.listInflow) : [];
+    listAmountInflow = report.listInflow ? Object.values(report.listInflow) : [];
   }
 
   function getMonthBefore() {
@@ -69,7 +71,7 @@ function Report() {
           <div className="hrBottom"></div>
         </div>
       </div>
-      {reports?.length > 0 ? (
+      {report !== {} ? (
         <div>
           <ChartGeneral date={date} />
           <div className="choiceType">
