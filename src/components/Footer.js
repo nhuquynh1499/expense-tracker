@@ -8,7 +8,7 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 
 function Footer(props) {
   let { pathname } = useLocation();
-  const pathnameHadFooter = ["transaction", "report", "planning", "user"];
+  const pathnameHadFooter = ["", "transaction", "report", "planning", "user"];
   const [isActive, setIsActive] = useState(pathname);
 
   useEffect(() => {

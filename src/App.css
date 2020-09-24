@@ -34,6 +34,14 @@
   align-items: center;
 }
 
+.filter .item:hover {
+  color: #ffffff;
+}
+
+.filter .item .hrBottom {
+  transition: background-color .5s;
+}
+
 .filter .item.active {
   color: #fff;
 }
