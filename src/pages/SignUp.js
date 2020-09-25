@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import logo from "../images/logo.svg";
@@ -13,8 +13,13 @@ export default function SignUp() {
     email: "",
     password: "",
   });
+  const [canSubmit, setCanSubmit] = useState(false);
 
   let history = useHistory();
+
+  useEffect(() => {
+    setCanSubmit(data.name !== "" && data.email && data.password);
+  }, [data]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -76,9 +81,13 @@ export default function SignUp() {
             </div>
 
             <button
-              className={data.password !== "" && data.name && data.email ? "formItem btnSubmit" : "formItem btnSubmit disabledBtn"}
+              className={
+                canSubmit
+                  ? "formItem btnSubmit"
+                  : "formItem btnSubmit disabledBtn"
+              }
               type="button"
-              disabled={!data.password}
+              disabled={!canSubmit}
               onClick={handleSubmit}
             >
               Tạo tài khoản
