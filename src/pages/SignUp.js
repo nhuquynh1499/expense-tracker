@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import logo from "../images/logo.svg";
+import PersonIcon from "@material-ui/icons/Person";
+import LockIcon from "@material-ui/icons/Lock";
+import DraftsIcon from "@material-ui/icons/Drafts";
 import "./SignUp.css";
 
 export default function SignUp() {
   const [data, setData] = useState({
-    contact: "",
     name: "",
-    username: "",
+    email: "",
     password: "",
-    avatar: "https://picsum.photos/400",
   });
 
   let history = useHistory();
@@ -27,10 +28,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:8000/api/user", data).then((res) => {
-      console.log(res);
-      console.log(res.data);
-    });
+    axios.post("http://localhost:8080/api/user", data);
     history.push("/signin");
   };
 
@@ -46,15 +44,27 @@ export default function SignUp() {
           </div>
           <form className="form-signup">
             <div className="formItem">
-              <label for="email">Tài khoản</label>
+              <PersonIcon className="iconInput" />
+              <label for="name">Họ và tên</label>
               <input
-                name="email"
-                id="email"
-                value={data.username}
+                name="name"
+                id="name"
+                value={data.name}
                 onChange={handleChange}
               />
             </div>
             <div className="formItem">
+              <DraftsIcon className="iconInput" />
+              <label for="email">Email</label>
+              <input
+                name="email"
+                id="email"
+                value={data.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="formItem">
+              <LockIcon className="iconInput" />
               <label for="password">Mật khẩu</label>
               <input
                 name="password"
@@ -64,8 +74,14 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            <button className="formItem btnSubmit" onClick={handleSubmit}>
-              Đăng ký
+
+            <button
+              className={data.password !== "" && data.name && data.email ? "formItem btnSubmit" : "formItem btnSubmit disabledBtn"}
+              type="button"
+              disabled={!data.password}
+              onClick={handleSubmit}
+            >
+              Tạo tài khoản
             </button>
           </form>
         </div>
