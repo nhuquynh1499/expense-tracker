@@ -1,5 +1,5 @@
 import React from "react";
-import { GroupContext } from "../contexts/Group";
+import { GroupContext } from "../../contexts/Group";
 import "./ReportItem.css";
 
 function ReportItem(props) {

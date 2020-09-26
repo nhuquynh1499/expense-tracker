@@ -1,7 +1,7 @@
 import React from "react";
-import ReportItem from "../components/ReportItem";
-import ChartType from "../components/ChartType";
-import { GroupContext } from "../contexts/Group";
+import ReportItem from "./ReportItem";
+import ChartType from "./ChartType";
+import { GroupContext } from "../../contexts/Group";
 import "./ReportType.css";
 
 function ReportType({ type, listGroup, listAmount }) {

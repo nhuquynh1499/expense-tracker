@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ReportType from "../components/ReportType";
-import ChartGeneral from "../components/ChartGeneral";
+import ReportType from "../components/report/ReportType";
+import ChartGeneral from "../components/report/ChartGeneral";
 import KeyboardCapslockIcon from "@material-ui/icons/KeyboardCapslock";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 
