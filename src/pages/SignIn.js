@@ -6,15 +6,14 @@ import FacebookIcon from "../images/facebook.svg";
 import GoogleIcon from "../images/google.svg";
 import LockIcon from "@material-ui/icons/Lock";
 import DraftsIcon from "@material-ui/icons/Drafts";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./SignIn.css";
 
 export default function SignIn() {
   const [data, setData] = useState({
-    contact: "",
-    name: "",
-    username: "",
+    email: "",
     password: "",
-    avatar: "https://picsum.photos/400",
   });
   const [canSubmit, setCanSubmit] = useState(false);
 
@@ -36,15 +35,19 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:8000/api/user", data).then((res) => {
+    axios.post("http://localhost:8080/api/login", data).then((res) => {
       console.log(res);
-      console.log(res.data);
+      localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userId", res.data.userId);
+        history.push("/");
+    }).catch((error) => {
+      toast.error("Invalid username or password");
     });
-    history.push("/signin");
   };
 
   return (
     <div className="SignIn">
+      <ToastContainer />
       <div className="Item">
         <div>
           <img className="logo" src={logo} alt="logo" />
