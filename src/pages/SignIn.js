@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import logo from "../images/logo.svg";
 import FacebookIcon from "../images/facebook.svg";
 import GoogleIcon from "../images/google.svg";
+import LockIcon from "@material-ui/icons/Lock";
+import DraftsIcon from "@material-ui/icons/Drafts";
 import "./SignIn.css";
 
 export default function SignIn() {
@@ -14,8 +16,13 @@ export default function SignIn() {
     password: "",
     avatar: "https://picsum.photos/400",
   });
+  const [canSubmit, setCanSubmit] = useState(false);
 
   let history = useHistory();
+
+  useEffect(() => {
+    setCanSubmit(data.name !== "" && data.email && data.password);
+  }, [data]);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -48,23 +55,36 @@ export default function SignIn() {
           </div>
           <form className="form-signIn">
             <div className="formItem">
-              <span>Tài khoản</span>
+              <DraftsIcon className="iconInput" />
+              <label for="email">Email</label>
               <input
                 name="email"
+                id="email"
                 value={data.username}
                 onChange={handleChange}
               />
             </div>
             <div className="formItem">
-              <span>Mật khẩu</span>
+              <LockIcon className="iconInput" />
+              <label for="password">Mật khẩu</label>
               <input
                 name="password"
+                id="password"
                 type="password"
                 value={data.password}
                 onChange={handleChange}
               />
             </div>
-            <button className="formItem btnSubmit" onClick={handleSubmit}>
+            <button
+              className={
+                canSubmit
+                  ? "formItem btnSubmit"
+                  : "formItem btnSubmit disabledBtn"
+              }
+              type="button"
+              disabled={!canSubmit}
+              onClick={handleSubmit}
+            >
               Đăng nhập
             </button>
           </form>

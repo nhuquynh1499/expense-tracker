@@ -105,25 +105,39 @@
 .SignIn .form-signIn .formItem {
   width: 100%;
   border: none;
-  padding: 7px 10px;
+  padding: 10px;
   box-shadow: inset 0px 0px 0px 1px #eeeeee;
   margin: 10px 0px;
   border-radius: 3px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.SignIn .form-signIn .formItem span {
+.SignIn .form-signIn .formItem .iconInput {
+  color: #367BBF;
+}
+
+.SignIn .form-signIn .formItem label {
   font-size: 11px;
   color: #a0a0a0;
   text-transform: uppercase;
   font-weight: 600;
   margin-bottom: 3px;
+  font-size: 10px;
+  position: absolute;
+  top: -6px;
+  left: 35px;
+  background-color: #fff;
+  padding: 0px 5px;
 }
 
 .SignIn .form-signIn .formItem input {
   border: 0px;
   padding: 0px;
+  flex-grow: 2;
+  margin-left: 10px;
 }
 
 .SignIn .form-signIn .formItem input:focus {
@@ -141,7 +155,8 @@
   cursor: pointer;
 }
 
-.SignIn .form-signIn .btnSubmit:hover {
+.SignIn .form-signIn .btnSubmit.disabledBtn {
+  cursor: not-allowed!important;
   background-color: #79b4db;
 }
 
