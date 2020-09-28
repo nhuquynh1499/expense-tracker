@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
@@ -7,15 +8,27 @@ import userIcon from "../images/user.svg";
 import "./User.css";
 
 function User() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await axios.get(
+        `http://localhost:8080/api/user/${localStorage.getItem("userId")}`
+      );
+      setUser(res.data);
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="user">
       <img className="avatar" src={userIcon} alt="avatar" />
       <div className="infor">
-        <h3 className="name">Như Quỳnh</h3>
-        <p className="mail">ngngocnhuquynh0104@gmail.com</p>
+        <h3 className="name">{user?.name}</h3>
+        <p className="mail">{user?.email}</p>
       </div>
       <button className="settingUser">Thiết lập tài khoản</button>
-      <h1 className='title'>Mở rộng</h1>
+      <h1 className="title">Mở rộng</h1>
       <div className="main">
         <div className="userItem">
           <div className="bgIcon wallet">
