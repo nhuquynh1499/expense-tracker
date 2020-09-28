@@ -19,7 +19,7 @@ function AddTransaction() {
     amount: 0,
     note: "",
     time: getToday(),
-    userId: localStorage.getItem('userId')
+    userId: localStorage.getItem("userId"),
   });
   const nameGroup = useRef(null);
   const iconGroup = useRef(null);
@@ -35,14 +35,21 @@ function AddTransaction() {
   const handleChange = (event) => {
     const name = event.target.name;
     let value = event.target.value;
-    if (name === "amount") {
-      value = addSum
-        ? Math.abs(value)
-        : -1 * Math.abs(value);
-    }
     setData({
       ...data,
       [name]: value,
+    });
+  };
+
+  const handleChangeAmount = (event) => {
+    let value = event.target.value;
+    if (!Number(value)) {
+      value = Number(value.split(",").join(""))
+    }
+    value = addSum ? Math.abs(value) : -1 * Math.abs(value);
+    setData({
+      ...data,
+      amount: value,
     });
   };
 
@@ -52,13 +59,11 @@ function AddTransaction() {
       "style",
       "background-image: url(" + icon + ")"
     );
-    const amount = addSum
-        ? Math.abs(data.amount)
-        : -1 * Math.abs(data.amount);
+    const amount = addSum ? Math.abs(data.amount) : -1 * Math.abs(data.amount);
     setData({
       ...data,
       groupId: id,
-      amount: amount
+      amount: amount,
     });
     setAddSum(addSum);
     setOpen(false);
@@ -84,7 +89,7 @@ function AddTransaction() {
       year: new Date(data.time).getFullYear(),
       groupId: data.groupId,
       amount: data.amount,
-      userId: localStorage.getItem('userId')
+      userId: localStorage.getItem("userId"),
     });
     await axios.put("http://localhost:8080/api/planning", data);
     history.push("/");
@@ -98,8 +103,8 @@ function AddTransaction() {
           name="amount"
           type="text"
           defaultValue={0}
-          value={Math.abs(data.amount)}
-          onChange={handleChange}
+          value={Number(Math.abs(data.amount)).toLocaleString()}
+          onChange={handleChangeAmount}
         />
       </div>
       <div className="item group" onClick={handleOpen}>

@@ -20,7 +20,7 @@ export default function () {
       <PrivateRoute exact path="/" component={Transaction} />
       <PrivateRoute path="/transaction" component={Transaction} />
       <PrivateRoute path="/report" component={Report} />
-      <PrivateRoute path="/add-transaction" component={AddTransaction} />
+      <Route path="/add-transaction" component={AddTransaction} />
       <PrivateRoute path="/planning" component={Planning} />
       <PrivateRoute path="/user" component={User} />
       
