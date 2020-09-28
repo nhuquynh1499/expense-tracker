@@ -123,13 +123,20 @@
 
 .action button {
   border: none;
-  background-color: #0077b6;
   padding: 15px 30px;
-  border-radius: 50vh;
+  /* border-radius: 50vh; */
   font-size: 16px;
   cursor: pointer;
   font-weight: 600;
   color: #fff;
+}
+
+.action .btnCancel {
+
+}
+
+.action .btnSave {
+  background-color: #0077b6;
 }
 
 .action button:focus {

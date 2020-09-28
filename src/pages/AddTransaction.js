@@ -44,7 +44,7 @@ function AddTransaction() {
   const handleChangeAmount = (event) => {
     let value = event.target.value;
     if (!Number(value)) {
-      value = Number(value.split(",").join(""))
+      value = Number(value.split(",").join(""));
     }
     value = addSum ? Math.abs(value) : -1 * Math.abs(value);
     setData({
@@ -94,6 +94,11 @@ function AddTransaction() {
     await axios.put("http://localhost:8080/api/planning", data);
     history.push("/");
   };
+
+  const backPrePage = () => {
+    history.push("/");
+  }
+
 
   return (
     <div className="addTransaction">
@@ -191,7 +196,8 @@ function AddTransaction() {
         />
       </div>
       <div className="action">
-        <button onClick={handleSubmit}>Lưu</button>
+        <button onClick={backPrePage} className="btnCancel">Hủy</button>
+        <button onClick={handleSubmit} className="btnSave">Lưu</button>
       </div>
     </div>
   );
