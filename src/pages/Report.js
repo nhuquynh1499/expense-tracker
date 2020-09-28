@@ -16,14 +16,13 @@ function Report() {
   useEffect(() => {
     async function fetchData(m, y) {
       const res = await axios.get(
-        `http://localhost:8080/api/report?m=${m}&y=${y}`
+        `http://localhost:8080/api/report/${localStorage.getItem('userId')}?m=${m}&y=${y}`
       );
       setReport(res.data);
     }
     fetchData(date.getMonth() + 1, date.getFullYear());
   }, [date]);
 
-  console.log(report);
 
   if (report) {
     listGroupOutflow = report.listOutflow ? Object.keys(report.listOutflow) : [];
@@ -71,7 +70,7 @@ function Report() {
           <div className="hrBottom"></div>
         </div>
       </div>
-      {report !== {} ? (
+      {report ? (
         <div>
           <ChartGeneral date={date} />
           <div className="choiceType">

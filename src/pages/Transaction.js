@@ -13,13 +13,12 @@ function Transaction() {
     async function filterTransaction(m, y) {
       async function fetchData() {
         const res = await axios.get(
-          `http://localhost:8080/api/transaction?m=${m}&y=${y}`
+          `http://localhost:8080/api/transaction/${localStorage.getItem('userId')}?m=${m}&y=${y}`
         );
         return res.data;
       }
       const data = await fetchData();
       const arrayAllDate = data.reduce((arrayDate, transaction) => {
-        // console.log(transaction)
         if (arrayDate.indexOf(transaction.time) === -1) {
           arrayDate.push(transaction.time);
         }

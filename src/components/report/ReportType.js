@@ -5,6 +5,8 @@ import { GroupContext } from "../../contexts/Group";
 import "./ReportType.css";
 
 function ReportType({ type, listGroup, listAmount }) {
+  console.log(type, listGroup, listAmount )
+  
   const backgroundColor = [
     "#989BCF",
     "#66C4BE",
@@ -47,7 +49,8 @@ function ReportType({ type, listGroup, listAmount }) {
               };
             });
           }
-          return data && <ChartType chartData={data} />;
+          console.log(data);
+          return data.length > 0 ? <ChartType chartData={data} /> : <div className="nodata">Không có báo cáo</div>;
         }}
       </GroupContext.Consumer>
       {listGroup?.map((item, index) => {

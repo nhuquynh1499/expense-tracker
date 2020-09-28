@@ -11,7 +11,7 @@ function Planning() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await axios.get("http://localhost:8080/api/planning");
+      const res = await axios.get(`http://localhost:8080/api/planning/${localStorage.getItem('userId')}`);
       const planning = res.data;
       setPlanning(planning);
     }

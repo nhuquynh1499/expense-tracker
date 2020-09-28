@@ -19,6 +19,7 @@ function AddTransaction() {
     amount: 0,
     note: "",
     time: getToday(),
+    userId: localStorage.getItem('userId')
   });
   const nameGroup = useRef(null);
   const iconGroup = useRef(null);
@@ -83,6 +84,7 @@ function AddTransaction() {
       year: new Date(data.time).getFullYear(),
       groupId: data.groupId,
       amount: data.amount,
+      userId: localStorage.getItem('userId')
     });
     await axios.put("http://localhost:8080/api/planning", data);
     history.push("/");
