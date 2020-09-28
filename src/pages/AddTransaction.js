@@ -97,107 +97,112 @@ function AddTransaction() {
 
   const backPrePage = () => {
     history.push("/");
-  }
-
+  };
 
   return (
     <div className="addTransaction">
-      <div className="item amount">
-        <p>Số tiền</p>
-        <input
-          name="amount"
-          type="text"
-          defaultValue={0}
-          value={Number(Math.abs(data.amount)).toLocaleString()}
-          onChange={handleChangeAmount}
-        />
-      </div>
-      <div className="item group" onClick={handleOpen}>
-        <div ref={iconGroup} className="imgIcon iconGroup"></div>
-        <div className="content">
+      <div className="wrappedAddTransaction">
+        <div className="item amount">
+          <p>Số tiền</p>
           <input
-            name="group"
-            defaultValue=""
-            ref={nameGroup}
-            placeholder="Chọn nhóm"
-            disabled
+            name="amount"
+            type="text"
+            defaultValue={0}
+            value={Number(Math.abs(data.amount)).toLocaleString()}
+            onChange={handleChangeAmount}
           />
-          <NavigateNextIcon className="moreIcon" />
         </div>
-      </div>
-      <Modal open={open} onClose={handleClose}>
-        <div className="Modal">
-          <div className="choiceType">
-            <button
-              className={type === 2 ? "active" : null}
-              onClick={() => setType(2)}
-            >
-              Khoản vay
-            </button>
-            <button
-              className={type === 0 ? "active" : null}
-              onClick={() => setType(0)}
-            >
-              Khoản chi
-            </button>
+        <div className="item group" onClick={handleOpen}>
+          <div ref={iconGroup} className="imgIcon iconGroup"></div>
+          <div className="content">
+            <input
+              name="group"
+              defaultValue=""
+              ref={nameGroup}
+              placeholder="Chọn nhóm"
+              disabled
+            />
+            <NavigateNextIcon className="moreIcon" />
+          </div>
+        </div>
+        <Modal open={open} onClose={handleClose}>
+          <div className="Modal">
+            <div className="choiceType">
+              <button
+                className={type === 2 ? "active" : null}
+                onClick={() => setType(2)}
+              >
+                Khoản vay
+              </button>
+              <button
+                className={type === 0 ? "active" : null}
+                onClick={() => setType(0)}
+              >
+                Khoản chi
+              </button>
 
-            <button
-              className={type === 1 ? "active" : null}
-              onClick={() => setType(1)}
-            >
-              Khoản thu
-            </button>
+              <button
+                className={type === 1 ? "active" : null}
+                onClick={() => setType(1)}
+              >
+                Khoản thu
+              </button>
+            </div>
+            <div className="showGroup">
+              <GroupContext.Consumer>
+                {({ groups }) => {
+                  return groups.map((group, index) => {
+                    return (
+                      group.type === type && (
+                        <GroupItem
+                          group={group}
+                          key={index}
+                          onClick={() =>
+                            selectGroup(
+                              group._id,
+                              group.name,
+                              group.icon,
+                              group.addSum
+                            )
+                          }
+                        />
+                      )
+                    );
+                  });
+                }}
+              </GroupContext.Consumer>
+            </div>
           </div>
-          <div className="showGroup">
-            <GroupContext.Consumer>
-              {({ groups }) => {
-                return groups.map((group, index) => {
-                  return (
-                    group.type === type && (
-                      <GroupItem
-                        group={group}
-                        key={index}
-                        onClick={() =>
-                          selectGroup(
-                            group._id,
-                            group.name,
-                            group.icon,
-                            group.addSum
-                          )
-                        }
-                      />
-                    )
-                  );
-                });
-              }}
-            </GroupContext.Consumer>
-          </div>
+        </Modal>
+        <div className="item">
+          <NotesIcon className="imgIcon" />
+          <input
+            type="text"
+            name="note"
+            placeholder="Ghi chú"
+            className="content"
+            value={data.note}
+            onChange={handleChange}
+          />
         </div>
-      </Modal>
-      <div className="item">
-        <NotesIcon className="imgIcon" />
-        <input
-          type="text"
-          name="note"
-          placeholder="Ghi chú"
-          className="content"
-          value={data.note}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="item">
-        <EventIcon className="imgIcon" />
-        <input
-          name="time"
-          className="content"
-          type="date"
-          value={data.time}
-          onChange={handleChange}
-        />
-      </div>
-      <div className="action">
-        <button onClick={backPrePage} className="btnCancel">Hủy</button>
-        <button onClick={handleSubmit} className="btnSave">Lưu</button>
+        <div className="item">
+          <EventIcon className="imgIcon" />
+          <input
+            name="time"
+            className="content"
+            type="date"
+            value={data.time}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="action">
+          <button onClick={backPrePage} className="btnCancel">
+            Hủy
+          </button>
+          <button onClick={handleSubmit} className="btnSave">
+            Lưu
+          </button>
+        </div>
       </div>
     </div>
   );
