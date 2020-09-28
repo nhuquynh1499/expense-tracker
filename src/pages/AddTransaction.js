@@ -83,15 +83,15 @@ function AddTransaction() {
   }
 
   const handleSubmit = async () => {
-    await axios.post("http://localhost:8080/api/transaction", data);
-    await axios.post("http://localhost:8080/api/report", {
+    await axios.post("https://api-expense-tracker-codersx.herokuapp.com/api/transaction", data);
+    await axios.post("https://api-expense-tracker-codersx.herokuapp.com/api/report", {
       month: new Date(data.time).getMonth() + 1,
       year: new Date(data.time).getFullYear(),
       groupId: data.groupId,
       amount: data.amount,
       userId: localStorage.getItem("userId"),
     });
-    await axios.put("http://localhost:8080/api/planning", data);
+    await axios.put("https://api-expense-tracker-codersx.herokuapp.com/api/planning", data);
     history.push("/");
   };
 

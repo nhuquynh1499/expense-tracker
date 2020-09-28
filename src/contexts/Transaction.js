@@ -14,7 +14,7 @@ export class TransactionProvider extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/api/transaction")
+      .get("https://api-expense-tracker-codersx.herokuapp.com/api/transaction")
       .then((res) => {
         const transactions = res.data;
         this.setState({ transactions });

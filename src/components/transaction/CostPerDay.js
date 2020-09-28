@@ -13,7 +13,7 @@ function CostPerDay({ date }) {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        `http://localhost:8080/api/transaction?d=${day}&m=${month}&y=${year}`
+        `https://api-expense-tracker-codersx.herokuapp.com/api/transaction?d=${day}&m=${month}&y=${year}`
       );
       const transactions = res.data;
       setTransactions(transactions);

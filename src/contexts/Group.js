@@ -15,7 +15,7 @@ export class GroupProvider extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/api/group")
+      .get("https://api-expense-tracker-codersx.herokuapp.com/api/group")
       .then((res) => {
         const groups = res.data;
         this.setState({ groups });

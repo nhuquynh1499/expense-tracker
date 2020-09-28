@@ -13,7 +13,7 @@ function Transaction() {
     async function filterTransaction(m, y) {
       async function fetchData() {
         const res = await axios.get(
-          `http://localhost:8080/api/transaction/${localStorage.getItem('userId')}?m=${m}&y=${y}`
+          `https://api-expense-tracker-codersx.herokuapp.com/api/transaction/${localStorage.getItem('userId')}?m=${m}&y=${y}`
         );
         return res.data;
       }

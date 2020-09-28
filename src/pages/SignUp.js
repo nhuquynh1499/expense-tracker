@@ -33,7 +33,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:8080/api/user", data);
+    axios.post("https://api-expense-tracker-codersx.herokuapp.com/api/user", data);
     history.push("/signin");
   };
 

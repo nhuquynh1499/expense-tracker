@@ -35,7 +35,7 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:8080/api/login", data).then((res) => {
+    axios.post("https://api-expense-tracker-codersx.herokuapp.com/api/login", data).then((res) => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
         localStorage.setItem("userId", res.data.userId);

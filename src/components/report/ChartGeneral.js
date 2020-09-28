@@ -76,7 +76,7 @@ export default function ChartGeneral({ date }) {
   useEffect(() => {
     async function fetch() {
       const res = await axios.get(
-        `http://localhost:8080/api/transaction/${localStorage.getItem('userId')}?m=${
+        `https://api-expense-tracker-codersx.herokuapp.com/api/transaction/${localStorage.getItem('userId')}?m=${
           date.getMonth() + 1
         }&y=${date.getFullYear()}`
       );
