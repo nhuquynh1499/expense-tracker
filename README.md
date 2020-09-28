@@ -3,7 +3,7 @@
 Live demo: [Expense Tracker](https://expense-tracker-by-charlotte.web.app).
 
 #### Transaction
-![Image Description](https://res.cloudinary.com/dsd9cchvp/image/upload/v1601284103/Expense-Tracker/screen-shot/Screenshot_from_2020-09-28_16-08-07_ciq3sp.png)
+![Image Description](https://res.cloudinary.com/dsd9cchvp/image/upload/v1601284262/Expense-Tracker/screen-shot/Screenshot_from_2020-09-28_16-10-41_issobw.png)
 
 In the project directory, you can run:
 
