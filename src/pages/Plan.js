@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddIcon from "../images/add.svg";
-import PlanItem from "../components/PlanItem";
-import "./Planning.css";
+import AddIcon from "../assets/add.svg";
+import PlanItem from "../components/Plan/PlanItem/index"
+import "./Plan.css";
 
 function Planning() {
   const [value, setValue] = React.useState(0);

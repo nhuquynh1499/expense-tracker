@@ -1,7 +1,7 @@
 import React from "react";
-import { GroupContext } from "../contexts/Group";
+import { GroupContext } from "../../../contexts/Group";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import "./PlanItem.css";
+import "./style.css";
 
 function PlanItem(props) {
   const { groupId, goal, amount, dateStart, dateEnd } = props.planning;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import logo from "../images/logo.svg";
+import logo from "../assets/logo.svg";
 import PersonIcon from "@material-ui/icons/Person";
 import LockIcon from "@material-ui/icons/Lock";
 import DraftsIcon from "@material-ui/icons/Drafts";

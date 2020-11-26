@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import AddIcon from "../images/add.svg";
-import CostPerDay from "../components/transaction/CostPerDay";
-import "./Transaction.css";
+import AddIcon from "../../assets/add.svg";
+import CostPerDay from "../Transaction/CostPerDay/index";
+import "./style.css";
 
 function Transaction() {
   const [date, setDate] = useState(new Date());

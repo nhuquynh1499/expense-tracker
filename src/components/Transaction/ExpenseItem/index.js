@@ -1,6 +1,6 @@
 import React from "react";
-import { GroupContext } from "../../contexts/Group";
-import "./ExpenseItem.css";
+import { GroupContext } from "../../../contexts/Group";
+import "./style.css";
 
 function ExpenseItem({ groupId, amount, note }) {
   return (

@@ -4,7 +4,7 @@ import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import WidgetsIcon from "@material-ui/icons/Widgets";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import BuildIcon from "@material-ui/icons/Build";
-import userIcon from "../images/user.svg";
+import userIcon from "../assets/user.svg";
 import "./User.css";
 
 function User() {

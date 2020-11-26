@@ -1,41 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import logo from "../images/logo.svg";
-import FacebookIcon from "../images/facebook.svg";
-import GoogleIcon from "../images/google.svg";
+import logo from "../assets/logo.svg";
+import FacebookIcon from "../assets/facebook.svg";
+import GoogleIcon from "../assets/google.svg";
 import LockIcon from "@material-ui/icons/Lock";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SignIn.css";
+import InputField from "../components/UI_Kits/InputField";
+import { Form, Formik, FastField } from "formik";
+import { Button } from "@material-ui/core";
 
 export default function SignIn() {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
   const [canSubmit, setCanSubmit] = useState(false);
 
   let history = useHistory();
 
-  useEffect(() => {
-    setCanSubmit(data.name !== "" && data.email && data.password);
-  }, [data]);
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setData({
-      ...data,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios.post("https://api-expense-tracker-codersx.herokuapp.com/api/login", data).then((res) => {
+  const handleSubmit = (values) => {
+    axios.post("https://api-expense-tracker-codersx.herokuapp.com/api/login", values).then((res) => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
         localStorage.setItem("userId", res.data.userId);
@@ -43,6 +27,11 @@ export default function SignIn() {
     }).catch((error) => {
       toast.error("Invalid username or password");
     });
+  };
+
+  const initialValues = {
+    email: "",
+    password: "",
   };
 
   return (
@@ -56,8 +45,47 @@ export default function SignIn() {
           <div>
             <h2>Tối ưu hóa việc quản lý tài chính cá nhân</h2>
           </div>
-          <form className="form-signIn">
-            <div className="formItem">
+          <Formik 
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+          >
+            {(formikProps) => {
+              const { values, errors, touched } = formikProps;
+              console.log({ values, touched, errors });
+
+              return (
+                <Form>
+                  <FastField
+                    name="email"
+                    component={InputField}
+                    label="Email"
+                    startAdornment={<DraftsIcon />}
+                    // placeholder="Email"
+                  />
+
+                  <FastField
+                    name="password"
+                    type="password"
+                    component={InputField}
+                    label="Password"
+                    startAdornment={<LockIcon />}
+                    // placeholder="Eg: Wow nature ..."
+                  />
+
+                  <Button type="submit" fullWidth variant="contained" color="primary">
+                    Đăng nhập
+                  </Button>
+                </Form>
+              );
+            }}
+          </Formik>
+          {/* <form className="form-signIn">
+            <InputField 
+              name="Email"
+              value={data.username}
+              
+            /> */}
+          {/* <div className="formItem">
               <DraftsIcon className="iconInput" />
               <label for="email">Email</label>
               <input
@@ -77,20 +105,20 @@ export default function SignIn() {
                 value={data.password}
                 onChange={handleChange}
               />
-            </div>
-            <button
-              className={
-                canSubmit
-                  ? "formItem btnSubmit"
-                  : "formItem btnSubmit disabledBtn"
-              }
+            </div> */}
+          {/* <button
+              // className={
+              //   canSubmit
+              //     ? "formItem btnSubmit"
+              //     : "formItem btnSubmit disabledBtn"
+              // }
               type="button"
-              disabled={!canSubmit}
+              // disabled={!canSubmit}
               onClick={handleSubmit}
             >
               Đăng nhập
             </button>
-          </form>
+          </form> */}
           <div className="or">
             <div className="ngang"></div>
             <span>OR</span>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./Footer.css";
 import { Link, useLocation } from "react-router-dom";
 import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
 import DonutSmallOutlinedIcon from "@material-ui/icons/DonutSmallOutlined";
 import TurnedInNotOutlinedIcon from "@material-ui/icons/TurnedInNotOutlined";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
+import "./style.css";
+
 
 function Footer(props) {
   let { pathname } = useLocation();
@@ -14,6 +15,7 @@ function Footer(props) {
   useEffect(() => {
     setIsActive(pathname);
   }, [pathname]);
+
   const toggle = () => {
     setIsActive(pathname);
   };

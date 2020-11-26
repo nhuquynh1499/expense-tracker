@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ExpenseItem from "./ExpenseItem";
+import ExpenseItem from "../ExpenseItem";
 
-import "./CostPerDay.css";
+import "./style.css";
 
 function CostPerDay({ date }) {
   const [transactions, setTransactions] = useState([]);

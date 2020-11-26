@@ -1,6 +1,6 @@
 ## Expense Tracker
 
-Live demo: [Expense Tracker](https://expense-tracker-by-charlotte.web.app).
+Live demo: https://expense-tracker-by-charlotte.web.app
 
 This project had [Back End](https://github.com/nhuquynh1499/api-expense-tracker) soure code at: https://github.com/nhuquynh1499/api-expense-tracker
 
